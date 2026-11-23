@@ -1,0 +1,3 @@
+trivial: complexity=1, functions=1, cognitive_complexity=0
+if/elif: complexity=2, functions=1, cognitive_complexity=2
+bool ops (if a and b or c): complexity=4, functions=1, cognitive_complexity=3, ncloc=4

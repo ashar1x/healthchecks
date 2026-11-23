@@ -1,0 +1,1 @@
+{"component":{"key":"sqe-calib-trivial","name":"Calibration - no branch","qualifier":"TRK","measures":[{"metric":"complexity","value":"1"},{"metric":"functions","value":"1"},{"metric":"cognitive_complexity","value":"0","bestValue":true},{"metric":"ncloc","value":"2"}]}}

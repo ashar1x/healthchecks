@@ -1,0 +1,4 @@
+Probe: function-level component qualifiers in SonarQube 26.11.0.134175 (community)
+GET /api/components/tree?qualifiers=FUNC -> {"errors":[{"msg":"Value of parameter \u0027qualifiers\u0027 (FUNC) must be one of: [UTS, FIL, DIR, TRK]"}]}
+GET /api/components/tree?qualifiers=BRC  -> {"errors":[{"msg":"Value of parameter \u0027qualifiers\u0027 (BRC) must be one of: [UTS, FIL, DIR, TRK]"}]}
+Valid qualifiers per API: [UTS, FIL, DIR, TRK] - no function/branch granularity exposed.
