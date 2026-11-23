@@ -1,0 +1,13 @@
+requirement_id,rule_ids,risk_ids,test_ids,defect_ids,owner,status
+FR-01,BR-01;BR-04,RISK-05;RISK-07,T-API-FR01-01;T-UC01-01,,Taimoor,planned
+FR-02,BR-01,RISK-05,T-API-FR02-01;T-UC03-01,,Taimoor,planned
+FR-03,BR-04;BR-03,RISK-03;RISK-02,T-API-FR03-01;T-UC02-01,,Taimoor,planned
+FR-04,BR-04,RISK-03,T-API-FR04-01,,Taimoor,planned
+FR-05,BR-04,RISK-03;RISK-04;RISK-09,T-API-FR05-01;T-UC05-01,,Taimoor,planned
+FR-06,BR-01,RISK-05,T-API-FR06-01;T-UNIT-BR01-01,,Taimoor,planned
+FR-07,BR-03,RISK-06;RISK-15,T-API-FR07-01;T-UC04-01,,Taimoor,planned
+FR-08,BR-03,RISK-15,T-API-FR08-01,,Taimoor,planned
+FR-09,BR-03,RISK-06;RISK-15,T-API-FR09-01;T-UC06-01,,Taimoor,planned
+FR-10,BR-02,RISK-01;RISK-08,T-UNIT-BR02-01;T-API-FR10-01,,Ashar,planned
+FR-11,BR-03,RISK-02,T-UNIT-BR03-01;T-API-FR11-01;T-UC02-01,,Ashar,planned
+FR-12,BR-04,RISK-09;RISK-04,T-API-FR12-01,,Taimoor,planned
