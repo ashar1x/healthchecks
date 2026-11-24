@@ -1,0 +1,173 @@
+[
+  {
+    "grace": 31536001,
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 4,
+    "test_id": "grace-above-max"
+  },
+  {
+    "grace": 59,
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 3,
+    "test_id": "grace-below-min"
+  },
+  {
+    "grace": 31536001,
+    "name": "bva-grace-above_max",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 35,
+    "test_id": "grace-bva-above_max",
+    "timeout": 60
+  },
+  {
+    "grace": 61,
+    "name": "bva-grace-above_min",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 32,
+    "test_id": "grace-bva-above_min",
+    "timeout": 60
+  },
+  {
+    "grace": 31536000,
+    "name": "bva-grace-at_max",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 33,
+    "test_id": "grace-bva-at_max",
+    "timeout": 60
+  },
+  {
+    "grace": 60,
+    "name": "bva-grace-at_min",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 31,
+    "test_id": "grace-bva-at_min",
+    "timeout": 60
+  },
+  {
+    "grace": 31535999,
+    "name": "bva-grace-below_max",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 34,
+    "test_id": "grace-bva-below_max",
+    "timeout": 60
+  },
+  {
+    "timeout": 60,
+    "grace": 59,
+    "name": "bva-grace-below_min",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 30,
+    "test_id": "grace-bva-below_min"
+  },
+  {
+    "kind": "invalid_kind",
+    "name": "kind-invalid",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 43,
+    "test_id": "kind-invalid"
+  },
+  {
+    "kind": "invalid_kind",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 5,
+    "test_id": "kind-invalid-enum"
+  },
+  {
+    "kind": "simple",
+    "name": "kind-valid",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 40,
+    "test_id": "kind-valid"
+  },
+  {
+    "kind": "cron",
+    "name": "kind-valid",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 41,
+    "test_id": "kind-valid"
+  },
+  {
+    "kind": "oncalendar",
+    "name": "kind-valid",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 42,
+    "test_id": "kind-valid"
+  },
+  {
+    "timeout": 31536001,
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 2,
+    "test_id": "timeout-above-max"
+  },
+  {
+    "timeout": 59,
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 1,
+    "test_id": "timeout-below-min"
+  },
+  {
+    "timeout": 31536001,
+    "name": "bva-timeout-above_max",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 25,
+    "test_id": "timeout-bva-above_max"
+  },
+  {
+    "timeout": 61,
+    "name": "bva-timeout-above_min",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 22,
+    "test_id": "timeout-bva-above_min"
+  },
+  {
+    "timeout": 31536000,
+    "name": "bva-timeout-at_max",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 23,
+    "test_id": "timeout-bva-at_max"
+  },
+  {
+    "timeout": 60,
+    "name": "bva-timeout-at_min",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 21,
+    "test_id": "timeout-bva-at_min"
+  },
+  {
+    "timeout": 31535999,
+    "name": "bva-timeout-below_max",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 24,
+    "test_id": "timeout-bva-below_max"
+  },
+  {
+    "timeout": 59,
+    "name": "bva-timeout-below_min",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 20,
+    "test_id": "timeout-bva-below_min"
+  },
+  {
+    "tz": "invalid_tz",
+    "name": "tz-invalid",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 40,
+    "test_id": "tz-invalid"
+  },
+  {
+    "tz": "invalid-tz",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 6,
+    "test_id": "tz-invalid-pattern"
+  },
+  {
+    "name": "valid check",
+    "kind": "simple",
+    "timeout": 60,
+    "grace": 60,
+    "tz": "UTC",
+    "spec_hash": "2ff8d927ff425250",
+    "seed": 42,
+    "test_id": "valid-payload"
+  }
+]

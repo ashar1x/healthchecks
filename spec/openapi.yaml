@@ -1,0 +1,535 @@
+openapi: "3.0.3"
+info:
+  title: "Healthchecks API"
+  description: "API for the Healthchecks monitoring system (Django 6.1.3)"
+  version: "1.0.0"
+servers:
+  - url: "http://localhost:8000"
+    description: "Development server"
+  - url: "http://host.docker.internal:8000"
+    description: "Docker environment"
+paths:
+  /api/v3/checks/:
+    get:
+      summary: "List checks (v3)"
+      operationId: "list_checks"
+      parameters:
+        - name: "X-Api-Key"
+          in: "header"
+          required: true
+          schema:
+            type: "string"
+            pattern: "^hcw_|hcr_"
+      responses:
+        "200":
+          description: "List of checks"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/CheckSummary"
+        "401":
+          description: "Missing or wrong API key"
+        "403":
+          description: "Other project's key"
+    post:
+      summary: "Create check (v3)"
+      operationId: "create_check"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCheckSpec"
+      responses:
+        "201":
+          description: "Check created"
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/CheckDetail" }
+        "400":
+          description: "Invalid input"
+        "401":
+          description: "Missing or wrong API key"
+  /api/v3/checks/{code}:
+    get:
+      summary: "Fetch check (v3)"
+      operationId: "get_check"
+      parameters:
+        - name: "code"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+        - name: "X-Api-Key"
+          in: "header"
+          required: true
+          schema:
+            type: "string"
+            pattern: "^hcw_|hcr_"
+      responses:
+        "200":
+          description: "Check details"
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/CheckDetail" }
+        "401":
+          description: "Missing or wrong API key"
+        "403":
+          description: "Other project's key"
+        "404":
+          description: "Check not found"
+    post:
+      summary: "Update check (v3)"
+      operationId: "update_check"
+      parameters:
+        - name: "code"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+        - name: "X-Api-Key"
+          in: "header"
+          required: true
+          schema:
+            type: "string"
+            pattern: "^hcw_|hcr_"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateCheckSpec"
+      responses:
+        "200":
+          description: "Check updated"
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/CheckDetail" }
+        "400":
+          description: "Invalid input"
+        "401":
+          description: "Missing or wrong API key"
+        "403":
+          description: "Other project's key or read-only key on write"
+        "404":
+          description: "Check not found"
+  /api/v3/checks/{unique_key}:
+    get:
+      summary: "Fetch check by unique key (v3)"
+      operationId: "get_check_by_unique_key"
+      parameters:
+        - name: "unique_key"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            pattern: "^[a-f0-9]{40}$"
+        - name: "X-Api-Key"
+          in: "header"
+          required: true
+          schema:
+            type: "string"
+            pattern: "^hcw_|hcr_"
+      responses:
+        "200":
+          description: "Check details"
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/CheckDetail" }
+        "401":
+          description: "Missing or wrong API key"
+        "403":
+          description: "Other project's key"
+  /api/v3/checks/{code}/pause:
+    post:
+      summary: "Pause check (v3)"
+      operationId: "pause_check"
+      parameters:
+        - name: "code"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+        - name: "X-Api-Key"
+          in: "header"
+          required: true
+          schema:
+            type: "string"
+            pattern: "^hcw_|hcr_"
+      responses:
+        "200":
+          description: "Check paused"
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/CheckDetail" }
+        "401":
+          description: "Missing or wrong API key"
+        "403":
+          description: "Read-only key or other project"
+        "409":
+          description: "Check is not paused (on resume)"
+    options:
+      summary: "CORS preflight for pause"
+      operationId: "pause_cors"
+      parameters:
+        - name: "code"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+      responses:
+        "204":
+          description: "CORS preflight succeeded"
+          headers:
+            Access-Control-Allow-Origin:
+              description: "*"
+            Access-Control-Allow-Headers:
+              description: "X-Api-Key"
+            Access-Control-Allow-Methods:
+              description: "POST"
+  /api/v3/checks/{code}/resume:
+    post:
+      summary: "Resume check (v3)"
+      operationId: "resume_check"
+      parameters:
+        - name: "code"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+        - name: "X-Api-Key"
+          in: "header"
+          required: true
+          schema:
+            type: "string"
+            pattern: "^hcw_|hcr_"
+      responses:
+        "200":
+          description: "Check resumed to new"
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/CheckDetail" }
+        "204":
+          description: "Already paused (idempotent, no second flip)"
+        "401":
+          description: "Missing or wrong API key"
+        "403":
+          description: "Read-only key or other project"
+        "409":
+          description: "Check is not paused"
+  /ping/{code}:
+    get:
+      summary: "Success ping (WF2)"
+      operationId: "success_ping"
+      parameters:
+        - name: "code"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    enum: ["new", "up", "down", "grace", "started"]
+                  n_pings:
+                    type: "integer"
+                  last_ping:
+                    type: "string"
+                    format: "date-time"
+                  last_duration:
+                    type: "string"
+        "404":
+          description: "Check not found"
+  /ping/{code}/fail:
+    get:
+      summary: "Fail ping (WF2)"
+      operationId: "fail_ping"
+      parameters:
+        - name: "code"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+      responses:
+        "200":
+          description: "Check set to down"
+        "404":
+          description: "Check not found"
+  /ping/{code}/start:
+    get:
+      summary: "Start ping (WF2)"
+      operationId: "start_ping"
+      parameters:
+        - name: "code"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+      responses:
+        "200":
+          description: "Check started"
+  /ping/{code}/{exitstatus}:
+    get:
+      summary: "Fail ping with exitstatus (WF2)"
+      operationId: "fail_ping_with_status"
+      parameters:
+        - name: "code"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+        - name: "exitstatus"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            minimum: 1
+            maximum: 255
+      responses:
+        "200":
+          description: "Check set to down"
+        "400":
+          description: "exitstatus > 255 (invalid format)"
+        "404":
+          description: "Check not found"
+  /ping/{ping_key}/{slug}:
+    get:
+      summary: "Ping by key and slug (WF2, unauthenticated)"
+      operationId: "ping_by_key_slug"
+      parameters:
+        - name: "ping_key"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            pattern: "^p{22}$"
+        - name: "slug"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            pattern: "^[a-z0-9-_]+$"
+      responses:
+        "200":
+          description: "OK"
+        "400":
+          description: "Uppercase slug"
+        "404":
+          description: "Unknown ping key or slug"
+  /api/v3/badges/{code}:
+    get:
+      summary: "Check badge (v3)"
+      operationId: "check_badge"
+      parameters:
+        - name: "code"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+      responses:
+        "200":
+          description: "Badge SVG"
+          content:
+            image/svg+xml: {}
+        "404":
+          description: "Check not found"
+components:
+  schemas:
+    CheckSummary:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        status:
+          type: "string"
+          enum: ["new", "up", "down", "grace", "started"]
+        n_pings:
+          type: "integer"
+        grace:
+          type: "integer"
+          format: "int64"
+        timeout:
+          type: "integer"
+          format: "int64"
+        grace_start:
+          type: "string"
+          format: "date-time"
+        last_ping:
+          type: "string"
+          format: "date-time"
+        update_url:
+          type: "string"
+        unique_key:
+          type: "string"
+        uuid:
+          type: "string"
+          format: "uuid"
+    CheckDetail:
+      allOf:
+        - $ref: "#/components/schemas/CheckSummary"
+        - type: "object"
+          required: ["name", "kind", "slug", "project", "created"]
+          properties:
+            name:
+              type: "string"
+            kind:
+              type: "string"
+              enum: ["simple", "cron", "oncalendar"]
+            slug:
+              type: "string"
+              pattern: "^[a-z0-9-_]+$"
+            project:
+              type: "string"
+            desc:
+              type: "string"
+            tags:
+              type: "string"
+            methods:
+              type: "string"
+            success_kw:
+              type: "string"
+            failure_kw:
+              type: "string"
+            start_kw:
+              type: "string"
+            filter_subject:
+              type: "boolean"
+            filter_body:
+              type: "boolean"
+            filter_http_body:
+              type: "boolean"
+            filter_default_fail:
+              type: "boolean"
+            alert_after:
+              type: "string"
+              format: "date-time"
+            last_start:
+              type: "string"
+              format: "date-time"
+            last_duration:
+              type: "string"
+            manual_resume:
+              type: "boolean"
+            started:
+              type: "boolean"
+            update_url:
+              type: "string"
+            unique_key:
+              type: "string"
+            uuid:
+              type: "string"
+              format: "uuid"
+    CreateCheckSpec:
+      type: "object"
+      required: ["name", "timeout", "grace"]
+      properties:
+        name:
+          type: "string"
+        kind:
+          type: "string"
+          enum: ["simple", "cron", "oncalendar"]
+          default: "simple"
+        timeout:
+          type: "integer"
+          format: "int64"
+          minimum: 60
+          maximum: 31536000
+        grace:
+          type: "integer"
+          format: "int64"
+          minimum: 60
+          maximum: 31536000
+        schedule:
+          type: "string"
+          description: "Cron expression (required if kind=cron)"
+        tz:
+          type: "string"
+          pattern: "^[A-Z]{1,3}(/[A-Z]{1,3})*$"
+          default: "UTC"
+        filter_subject:
+          type: "boolean"
+          default: false
+        filter_body:
+          type: "boolean"
+          default: false
+        filter_http_body:
+          type: "boolean"
+          default: false
+        filter_default_fail:
+          type: "boolean"
+          default: false
+        start_kw:
+          type: "string"
+        success_kw:
+          type: "string"
+        failure_kw:
+          type: "string"
+    UpdateCheckSpec:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        timeout:
+          type: "integer"
+          format: "int64"
+          minimum: 60
+          maximum: 31536000
+        grace:
+          type: "integer"
+          format: "int64"
+          minimum: 60
+          maximum: 31536000
+        schedule:
+          type: "string"
+          description: "Cron expression (if kind=cron)"
+        tz:
+          type: "string"
+          pattern: "^[A-Z]{1,3}(/[A-Z]{1,3})*$"
+        filter_subject:
+          type: "boolean"
+        filter_body:
+          type: "boolean"
+        filter_http_body:
+          type: "boolean"
+        filter_default_fail:
+          type: "boolean"
+    ErrorResponse:
+      type: "object"
+      properties:
+        error:
+          type: "string"
+    ApiKeyAuth:
+      type: "object"
+      required: ["X-Api-Key"]
+      properties:
+        X-Api-Key:
+          type: "string"
+          description: "32-char raw key (hcw_ or hcr_ prefix)"
+    StatusEnum:
+      type: "string"
+      enum: ["new", "up", "down", "grace", "started"]
+security: []
+securitySchemes:
+  ApiKeyAuth:
+    type: "http"
+    scheme: "bearer"
+    bearerFormat: "hcw_/hcr_"
