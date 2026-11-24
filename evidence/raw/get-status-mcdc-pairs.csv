@@ -1,0 +1,8 @@
+condition,label,row_true,outcome_true,row_false,outcome_false
+a4,"stored status in (new, paused, down)",R0011111,new,R0010111,up
+a5,grace_start is None,R0010111,up,R0010011,down
+a6,now >= grace_end,R0010011,down,R0010001,grace
+a7,now >= grace_start,R0010001,grace,R0010000,up
+a1,last_start is set,R1010000,started,R0010000,up
+a3,with_started is true,R1010000,started,R1000000,up
+a2,now >= last_start + grace,R1100000,down,R1000000,up

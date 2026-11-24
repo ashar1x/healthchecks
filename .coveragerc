@@ -1,0 +1,22 @@
+# Coverage configuration for Phase 5 white-box unit tests.
+# Measured files = the server-side business logic named in docs/08-unit-testing.md:
+#   hc/api/models.py      Check.get_status, get_grace_start, going_down_after, ping,
+#                         pause/resume data rules, Check/Ping/Flip model logic
+#   hc/api/decorators.py  API key and role checks (authorize, authorize_read, cors)
+# Branch coverage is on (master prompt, Phase 5 rule 1).
+[run]
+branch = True
+source = hc
+include =
+    */hc/api/models.py
+    */hc/api/decorators.py
+
+[report]
+show_missing = True
+skip_empty = True
+
+[html]
+directory = evidence/coverage-html
+
+[xml]
+output = evidence/coverage.xml
