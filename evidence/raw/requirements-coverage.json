@@ -1,0 +1,14 @@
+{
+  "source_of_requirements": "docs/01-scope-and-test-basis.md",
+  "source_of_matrix": "docs/07-traceability.csv",
+  "requirements_total": 12,
+  "traceability_rows": 12,
+  "rows_with_test_ids": 12,
+  "test_functions_found": 0,
+  "requirements_with_planned_test": 0,
+  "planned_coverage_pct": 0.0,
+  "pytest_report": null,
+  "requirements_with_passing_test": null,
+  "executed_coverage_pct": null,
+  "missing_or_invalid_ids": []
+}
