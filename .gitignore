@@ -8,3 +8,8 @@ hc.sqlite
 hc/local_settings.py
 static-collected
 .scannerwork/
+mutants/
+mutmut_venv/
+htmlcov/
+
+mutmut-run.log

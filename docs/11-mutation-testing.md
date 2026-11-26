@@ -1,105 +1,199 @@
-# 11 — Mutation Testing and CI Quality Gate (Phase 8, Area 1, 8 marks)
+# 11 — Mutation Testing and CI Quality Gate (Phase 8)
 
-> **Goal:** verify that the test suite detects injected faults (mutants); establish a
-> CI quality gate that blocks merges when mutant survival exceeds a threshold.
+## 1. Tool and Configuration
 
-## 1. Mutation testing tool
+**Tool:** `mutmut` 3.8.1 (Python 3.12.3, pytest 9.2.0, pytest-django 4.14.0, Linux).
+mutmut modifies the source, runs the team tests against each mutant, and
+classifies a mutant as **killed** (a test failed) or **survived** (all selected
+tests passed). It was chosen because it works with pytest/Django and exposes
+per-mutant evidence and CI-friendly statistics.
 
-The master prompt Phase 5 rule 5 states: *"For every uncovered line or branch write a
-justification (dead code, framework glue, unreachable). Prefer fewer exclusions.
-No `# pragma: no cover` without a matching note."*
+**Measurement scope.** The source paths in `setup.cfg` are the two files named
+as the Phase 5 measurement target in `docs/08-unit-testing.md §1` and
+`.coveragerc`:
 
-### 1.1 `mutmut` (recommended)
+| File | Functions |
+|------|-----------|
+| `hc/api/models.py` | `get_status`, `get_grace_start`, `going_down_after`, `ping`, pause/resume data rules, `prune`, `create_flip` |
+| `hc/api/decorators.py` | `authorize`, `authorize_read`, `cors` (API key / role checks) |
 
-- **Package:** `mutmut` (PyPI)
-- **Default executor:** `mutmut run` then `mutmut results`
-- **Windows / WSL status:** *Native Windows support is tracked in*
-  <https://github.com/boxed/mutmut/issues/397>.  The tool exits with the
-  message: *"To run mutmut on Windows, please use the WSL."*
-- **Docker workaround:**  Docker can install `mutmut` inside a container
-  (`docker run --mount type=bind,src=./,dst=/workdir ...`), but the
-  container runtime (`runc`) fails to execute `mutmut` unless WSL 2 is
-  available on the host.  The error is:
-  ```
-  WSL (7) ERROR: UtilBindVsockAnyPort:... socket failed 1
-  ```
-- **Decision:** *Phase 8 mutation testing is deferred until WSL or an
-  alternative mutator is available.*  The CI quality gate (section 2) is
-  documented regardless, so the pipeline schema exists for when the mutator
-  becomes Windows-compatible.
+**Configuration (`setup.cfg`, mutmut 3.x keys — one list item per line):**
 
-### 1.2 Alternative: manual fault injection
+```ini
+[mutmut]
+source_paths = hc/
+only_mutate =
+    hc/api/models.py
+    hc/api/decorators.py
+mutate_only_covered_lines = true
+pytest_add_cli_args_test_selection = tests/team/
+also_copy =
+    pytest.ini
+    manage.py
+    CHANGELOG.md
+    templates/
+    evidence/raw
+```
 
-As a stop-gap, the team can implement a *manual* mutant selector that
-inverts a small, curated set of Boolean sub-expressions in the measured
-files (`hc/api/models.py`, `hc/api/decorators.py`).  Each mutant is a
-single‑bit flip in a condition that feature tests already cover.  The
-pipeline can count "survivors" (tests that pass despite the fault) and
-report the score as *0% mutation killed* until the test assertions are
-strengthened.  This approach satisfies the *CI quality gate* requirement
-without requiring `mutmut` Windows support.
+- `source_paths = hc/` copies the whole package so the mutants can be imported
+  (Django settings, URLconf). `only_mutate` restricts mutation to the two
+  measured files; 653 other files are copied but ignored.
+- `mutate_only_covered_lines = true` mutates only lines exercised by
+  `tests/team/`. The rest of `models.py` is outside the Phase 5 scope and is
+  defended line by line in `docs/08-unit-testing.md §5`.
+- `pytest.ini`, `manage.py` and `CHANGELOG.md` must be copied into `mutants/`:
+  without `manage.py`, pytest-django walks up to the original repo root and
+  inserts it at `sys.path[0]`, so tests import **unmutated** code and no mutant
+  is ever associated with a test.
 
-## 2. CI quality gate
+## 2. Running Mutation Testing Locally (Linux)
 
-The CI pipeline (GitHub Actions, Azure Pipelines, or GitLab CI) should
-include a job named `mutation-test` that:
+```bash
+cd /path/to/healthchecks
+python3 -m venv mutmut_venv
+source mutmut_venv/bin/activate
+pip install -r requirements.txt -r requirements-dev.txt
+pip install mutmut pytest pytest-django
+mutmut run                       # ~30 min with --max-children 2
+mutmut results                   # lists every mutant verdict
+mutmut export-cicd-stats         # mutants/mutmut-cicd-stats.json
+python tools/mutation/score_gate.py --no-gate
+python tools/mutation/custom_operators.py
+```
 
-| Step | Command (once `mutmut` is Windows‑compatible) | Purpose |
-|------|---------------------------------------------|---------|
-| **install** | `pip install mutmut coverage` | ensure the mutator and coverage runner are available |
-| **mutate** | `mutmut run --paths-to-mutate hc/api/ hc/accounts/ hc/front/` | generate mutants (one at a time, in‑process) |
-| **test** | `python -m pytest tests/team/ -q --tb=short` | run the full team test suite |
-| **results** | `mutmut results --show-surviving` | display which mutants survived |
-| **gate** | `mutmut results --fail-under=80` | fail the job if >20% of mutants survive |
+The earlier `BadTestExecutionCommandsException` from `pytest-randomly` is a
+mutmut 2.x issue. With mutmut 3.x and no `pytest-randomly` in this venv the
+suite runs unchanged; the CI workflow still uninstalls it as a safeguard.
 
-**Gate rationale:** 80% mutation killing is a common minimum for
-production‑critical Django projects.  Below that threshold the test suite
-is considered *insufficient* to catch regressions, and the PR should be
-blocked until the test suite is strengthened.
+### 2.1 CI Workflow (`.github/workflows/mutation.yml`)
 
-If `mutmut` cannot run (WSL not available), the gate falls back to a
-**manual checklist**:
+Runs on every PR and push affecting the measured paths to `master` or
+`area1/ashar`:
 
-- [ ] All `BR‑01` boundary tests exercise the `timeout`/`grace` `min`/`max` edges
-- [ ] All `BR‑02` MCC/MC/DC rows from `docs/08` §3 are represented in `tests/team/`
-- [ ] All `BR‑03` state‑transition tests cover every allowed/disallowed transition
-- [ ] All `BR‑04` role/key tests cover owner, rw member, ro member, rw key, ro key, unauthenticated
-- [ ] No `# pragma: no cover` directives exist in the measured files without a matching note in `docs/08` §5
+1. Checkout, Python 3.12, install `requirements.txt`, `requirements-dev.txt`,
+   `mutmut`, `pytest`, `pytest-django`; remove `pytest-randomly`.
+2. `mutmut run`, then `mutmut results` and `mutmut export-cicd-stats`.
+3. `python tools/mutation/score_gate.py` enforces the **80% threshold** on the
+   business-rule score and fails the job below it. No `continue-on-error` or
+   `|| true` escape hatches.
 
-## 3. Deliverable for Phase 8
+**Why 80%:** Phase 5 reached 100% statement/branch coverage of the measured
+logic, the `get_status` MCC table has 128 rows and 7 MC/DC pairs, BR-03 covers
+every allowed/disallowed transition and BR-04 covers all six principals.
+Below 80% therefore indicates weak assertions rather than untested code.
 
-| Artifact | Location | Status |
-|----------|----------|--------|
-| Mutation testing documentation | `docs/11-mutation-testing.md` | ✅ Created (section 1‑2) |
-| CI quality‑gate schema (YAML/JSON) | `.github/workflows/mutation.yml` (or equivalent) | ❌ Blocked until Windows‑compatible mutator available |
-| Manual fault‑injection checklist | `docs/11-mutation-testing.md` §2.2 | ✅ Created |
-| Mutation score badge (future) | `README.md` or `docs/11-mutation-testing.md` | ❌ Pending |
+## 3. Results (run on 2026-11-26)
 
-**Next steps to unblock Phase 8:**
+Command: `mutmut run --max-children 2` (resumed once after an interruption;
+mutmut caches verdicts). Evidence: `evidence/mutation/mutmut-summary.json`.
 
-1. **Install WSL 2** on the development machine (per the master prompt §12:
-   "WSL assumed, absent" — but the user can install it).
-2. **Re‑run `mutmut`** on the measured files and record the mutation score.
-3. **Commit the CI workflow** `.github/workflows/mutation.yml` with the gate
-   configuration.
-4. If WSL is truly impossible, **replace `mutmut` with a manual fault‑injection
-   script** that flips one Boolean at a time in `hc/api/models.py` and
-   `hc/api/decorators.py`, and document the resulting "0% killed" status with
-   a plan to strengthen the test suite (which is the actual goal of Phase 8
-   anyway — *strengthen tests, not just run a tool*).
+| Metric | Result |
+|--------|--------|
+| Mutants generated | **365** (357 in `models.py`, 8 in `decorators.py`) |
+| Killed | **310** |
+| Survived | **52** |
+| No tests / not checked | **3** |
+| **Full-file mutation score** | **84.9%** (310 / 365) |
+| **Business-rule score (gate)** | **88.3%** (203 / 230 measured mutants) |
+| Team tests | **221 passed** |
+| Gate threshold | 80% — **PASSED** on both scores |
 
-## 4. Mutation‑score target for this project
+The business-rule score is computed by `tools/mutation/score_gate.py`, which
+selects only the mutants in the functions listed in §1. The full-file score
+also includes serialisation helpers (`to_dict`, `channels_str`, `isostring`)
+that are executed but intentionally not asserted by the unit suite.
 
-Given the current test suite (215 tests, 0 failures) and the measured files
-(`hc/api/models.py`, `hc/api/decorators.py`), a realistic initial target
-is **70% mutation killed**.  The 30% survivors would correspond to the
-deliberate exclusions documented in `docs/08-unit-testing.md` §5 (form fields,
-views, boilerplate).  As those exclusions are justified and potentially
-reduced, the target can be raised to **80%**.
+## 4. Surviving Mutant Analysis
 
-## Revision history
+52 mutants survived. Full diffs for all of them are saved in
+`evidence/mutation/survivor-diffs.txt` (generated with `mutmut show`). The
+table below analyses 24 of them across every surviving function. Categories:
+**E** equivalent in the exercised context, **M** missing test, **W** weak
+assertion, **T** tool artifact (in-process module cache).
+
+| Mutant | Mutation | Class | Justification / action |
+|--------|----------|-------|------------------------|
+| `x_cors__mutmut_1` | `set(methods)` → `None` | T | `cors(...)` runs at import time; mutmut's worker inherits the already-imported module, so the change is never executed. Not a test weakness. |
+| `x_cors__mutmut_2` | `set(methods)` → `set(None)` | T | Same import-time module-cache artifact. |
+| `x_cors__mutmut_3` | `.add("OPTIONS")` → `.add(None)` | T | Same artifact; no test can observe it in this process model. |
+| `x_cors__mutmut_4` | `"OPTIONS"` → `"XXOPTIONSXX"` | T | Same artifact. A direct header assertion would kill it outside mutmut. |
+| `x_cors__mutmut_5` | `"OPTIONS"` → `"options"` | T | Same artifact. |
+| `x_cors__mutmut_6` | `methods_str` → `None` | T | Same artifact. |
+| `x_cors__mutmut_7` | `", ".join(methods_set)` → `join(None)` | T | Same artifact. |
+| `x_cors__mutmut_8` | separator `", "` → `"XX, XX"` | T | Same artifact. |
+| `x_isostring__mutmut_1` | `if dt` → `if dt and False` | M | Tests only assert `last_ping is None`; no non-None timestamp is formatted. Add a ping round-trip assertion. |
+| `x_isostring__mutmut_3` | `microsecond=0` → `microsecond=None` | M | Same missing non-None datetime witness. |
+| `x_isostring__mutmut_4` | `microsecond=0` → `microsecond=1` | W | Needs an exact ISO string assertion for a datetime with microseconds. |
+| `get_grace_start__mutmut_1` | `with_started=True` → `False` | M | All tests pass `with_started` explicitly; the default is never exercised. |
+| `get_grace_start__mutmut_22` | `ZoneInfo(self.tz)` → `None` | E | Container local timezone is UTC, so the instant is unchanged (DST-sensitive in production). |
+| `get_grace_start__mutmut_31` | `astimezone(utc)` → `astimezone(None)` | E | Same UTC-equivalence in this environment. |
+| `get_grace_start__mutmut_32` | `kind == ... and status == "up"` → `or` | M | No test uses a cron/oncalendar check with a non-`up` stored status. |
+| `get_grace_start__mutmut_41` | `ZoneInfo(self.tz)` → `None` (oncalendar) | E | UTC-equivalence. |
+| `get_grace_start__mutmut_50` | `astimezone(utc)` → `astimezone(None)` | E | UTC-equivalence. |
+| `get_grace_start__mutmut_51` | `result = NEVER` → `None` | E | Both values become `None` at the final `result != NEVER` guard. |
+| `get_status__mutmut_1` | `with_started=False` → `True` | M | MCC tests always pass `with_started` explicitly. |
+| `get_status__mutmut_17` | `with_started=False` → `None` | E | `None` is falsy; behaviour is identical. |
+| `channels_str__mutmut_3` | `str(channel.code)` → `str(None)` | M | No test assigns a channel and asserts its code in the API payload. |
+| `to_dict__mutmut_1` | `readonly=False` → `True` (default) | M | API always passes `readonly` explicitly; add a direct default-argument test. |
+| `to_dict__mutmut_2` | `v=3` → `v=4` (default) | M | Same default not exercised by the API caller. |
+| `ping__mutmut_79` | `"start"` → `"XXstartXX"` in kind list | W | State tests assert status/flip but not `Ping.kind`; add `assert ping.kind == "start"`. |
+| `ping__mutmut_93` | `len(body) > 100 and S3_BUCKET` → `or` | M | No S3 bucket in the test environment; branch needs a test double. |
+
+**Killable survivors already fixed.** The first full run had 120 survivors,
+dominated by `to_dict` (57) and `clamped_last_duration`. The new
+`tests/team/unit/test_api_payload.py` (exact API read-back of every field) and
+three exact `>=` boundary tests in `test_get_status_edges.py` killed 68 of
+them. The remaining survivors are predominantly equivalent or tool artifacts;
+the genuinely missing tests need S3/channel fixtures and are recorded as
+residual risk rather than silently ignored.
+
+## 5. Manual Fallback Checklist
+
+Not used — mutmut ran successfully. The five BR checks in the original
+fallback checklist remain satisfied by `test_validation_bva.py`,
+`test_get_status_mcc.py`, `test_ping_state_machine.py`,
+`test_decorators_auth.py` and the absence of `pragma: no cover` in the
+measured files.
+
+## 6. Custom Mutation Operators
+
+Two operators derived from the business rules are implemented in
+`tools/mutation/custom_operators.py` (each mutant is applied, the relevant
+tests run, and the source restored):
+
+1. **BoundaryValueOperator (BR-01)** — `AddCheckForm.timeout`/`grace`
+   `min_value=60` → 59/61 and `max_value=31536000` → 31535999/31536001
+   (8 mutants).
+2. **BooleanNegationOperator (BR-02/BR-03)** — in `get_status`,
+   `get_grace_start` and `ping`: negate conditions, flip `>=`/`==`, swap
+   `and`/`or`, change `min()` → `max()` (12 mutants).
+
+**Result: 20/20 killed (100%).** Evidence:
+`evidence/mutation/custom-operators.json`. The three comparison mutants
+(`>=` → `>`) were initially survived; they are now killed by the exact
+boundary tests added in §4.
+
+## 7. Phase 8 Status Tracking
+
+| Component | Done | By | Notes |
+|-----------|------|----|-------|
+| `docs/11-mutation-testing.md` | ✅ | Ashar / Ali | Documentation + executed results |
+| `.github/workflows/mutation.yml` | ✅ | Ashar / Ali | 80% gate, corrected for mutmut 3.x |
+| `setup.cfg` | ✅ | Ashar / Ali | mutmut 3.x config, measured scope |
+| Manual fallback checklist | ✅ | Ashar | Not needed |
+| Mutation score | ✅ | Ali | 84.9% full / 88.3% business-rule |
+| Custom operators | ✅ | Ali | 20/20 killed |
+| Surviving-mutant analysis (≥15) | ✅ | Ali | 24 analysed in §4 |
+| CI quality gate auto-validate | ✅ | Ali | PR to `area1/ashar` |
+
+## 8. Next Steps
+
+1. Merge PR `ali-phase8-mutation` → `area1/ashar`; CI revalidates the gate.
+2. Phase 9: Node.js/Playwright Lighthouse and axe-core tests (Ali).
+
+## 9. Revision History
 
 | Date | Change |
 |------|--------|
-| 2026‑11‑24 | Documentation drafted; `mutmut` installed but Windows‑incompatible; CI gate schema drafted; manual fallback described. |
-| 2026‑11‑24 (future) | WSL installation → `mutmut` run → mutation score recorded → CI gate activated. |
+| 2026-11-26 | Initial Phase 8 documentation created (Ashar) |
+| 2026-11-26 | Executed mutmut 3.8.1 on Linux; recorded 84.9%/88.3% scores, 24 survivor analyses, custom operators 20/20; fixed CI workflow and added API payload / boundary tests (Ali) |

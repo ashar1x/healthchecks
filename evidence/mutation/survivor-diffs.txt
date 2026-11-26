@@ -1,0 +1,491 @@
+===== hc.api.decorators.x_cors__mutmut_1
++++ hc/api/decorators.py
+@@ -1,5 +1,5 @@
+ def cors(*methods: str) -> Callable[[ViewFunc], ViewFunc]:
+-    methods_set = set(methods)
++    methods_set = None
+     methods_set.add("OPTIONS")
+     methods_str = ", ".join(methods_set)
+ 
+===== hc.api.decorators.x_cors__mutmut_2
++++ hc/api/decorators.py
+@@ -1,5 +1,5 @@
+ def cors(*methods: str) -> Callable[[ViewFunc], ViewFunc]:
+-    methods_set = set(methods)
++    methods_set = set(None)
+     methods_set.add("OPTIONS")
+     methods_str = ", ".join(methods_set)
+ 
+===== hc.api.decorators.x_cors__mutmut_3
++++ hc/api/decorators.py
+@@ -1,6 +1,6 @@
+ def cors(*methods: str) -> Callable[[ViewFunc], ViewFunc]:
+     methods_set = set(methods)
+-    methods_set.add("OPTIONS")
++    methods_set.add(None)
+     methods_str = ", ".join(methods_set)
+ 
+     def decorator(f: ViewFunc) -> ViewFunc:
+===== hc.api.decorators.x_cors__mutmut_4
++++ hc/api/decorators.py
+@@ -1,6 +1,6 @@
+ def cors(*methods: str) -> Callable[[ViewFunc], ViewFunc]:
+     methods_set = set(methods)
+-    methods_set.add("OPTIONS")
++    methods_set.add("XXOPTIONSXX")
+     methods_str = ", ".join(methods_set)
+ 
+     def decorator(f: ViewFunc) -> ViewFunc:
+===== hc.api.decorators.x_cors__mutmut_5
++++ hc/api/decorators.py
+@@ -1,6 +1,6 @@
+ def cors(*methods: str) -> Callable[[ViewFunc], ViewFunc]:
+     methods_set = set(methods)
+-    methods_set.add("OPTIONS")
++    methods_set.add("options")
+     methods_str = ", ".join(methods_set)
+ 
+     def decorator(f: ViewFunc) -> ViewFunc:
+===== hc.api.decorators.x_cors__mutmut_6
++++ hc/api/decorators.py
+@@ -1,7 +1,7 @@
+ def cors(*methods: str) -> Callable[[ViewFunc], ViewFunc]:
+     methods_set = set(methods)
+     methods_set.add("OPTIONS")
+-    methods_str = ", ".join(methods_set)
++    methods_str = None
+ 
+     def decorator(f: ViewFunc) -> ViewFunc:
+===== hc.api.decorators.x_cors__mutmut_7
++++ hc/api/decorators.py
+@@ -1,7 +1,7 @@
+ def cors(*methods: str) -> Callable[[ViewFunc], ViewFunc]:
+     methods_set = set(methods)
+     methods_set.add("OPTIONS")
+-    methods_str = ", ".join(methods_set)
++    methods_str = ", ".join(None)
+ 
+     def decorator(f: ViewFunc) -> ViewFunc:
+===== hc.api.decorators.x_cors__mutmut_8
++++ hc/api/decorators.py
+@@ -1,7 +1,7 @@
+ def cors(*methods: str) -> Callable[[ViewFunc], ViewFunc]:
+     methods_set = set(methods)
+     methods_set.add("OPTIONS")
+-    methods_str = ", ".join(methods_set)
++    methods_str = "XX, XX".join(methods_set)
+ 
+     def decorator(f: ViewFunc) -> ViewFunc:
+===== hc.api.models.x_isostring__mutmut_1
++++ hc/api/models.py
+@@ -1,3 +1,3 @@
+ def isostring(dt: datetime | None) -> str | None:
+     """Convert the datetime to ISO 8601 format with no microseconds."""
+-    return dt.replace(microsecond=0).isoformat() if dt else None
++    return dt.replace(microsecond=0).isoformat() if (dt) and False else None
+===== hc.api.models.x_isostring__mutmut_3
++++ hc/api/models.py
+@@ -1,3 +1,3 @@
+ def isostring(dt: datetime | None) -> str | None:
+     """Convert the datetime to ISO 8601 format with no microseconds."""
+-    return dt.replace(microsecond=0).isoformat() if dt else None
++    return dt.replace(microsecond=None).isoformat() if dt else None
+===== hc.api.models.x_isostring__mutmut_4
++++ hc/api/models.py
+@@ -1,3 +1,3 @@
+ def isostring(dt: datetime | None) -> str | None:
+     """Convert the datetime to ISO 8601 format with no microseconds."""
+-    return dt.replace(microsecond=0).isoformat() if dt else None
++    return dt.replace(microsecond=1).isoformat() if dt else None
+===== hc.api.models.xǁCheckǁget_grace_start__mutmut_1
++++ hc/api/models.py
+@@ -1,4 +1,4 @@
+-def get_grace_start(self, *, with_started: bool = True) -> datetime | None:
++def get_grace_start(self, *, with_started: bool = False) -> datetime | None:
+     """Return the datetime when the grace period starts.
+ 
+         If the check is currently new, paused or down, return None.
+===== hc.api.models.xǁCheckǁget_grace_start__mutmut_22
++++ hc/api/models.py
+@@ -15,7 +15,7 @@
+         # The complex case, next ping is expected based on cron schedule.
+         # Don't convert to naive datetimes (and so avoid ambiguities around
+         # DST transitions). cronsim will handle the timezone-aware datetimes.
+-        last_local = self.last_ping.astimezone(ZoneInfo(self.tz))
++        last_local = self.last_ping.astimezone(None)
+         result = next(CronSim(self.schedule, last_local))
+         # Important: convert from the local timezone back to UTC.
+===== hc.api.models.xǁCheckǁget_grace_start__mutmut_31
++++ hc/api/models.py
+@@ -21,7 +21,7 @@
+         # If the result is kept in the local timezone, adding
+         # a timedelta to it later (in `going_down_after` and in `get_status`)
+         # may yield incorrect results during DST transitions.
+-        result = result.astimezone(timezone.utc)
++        result = result.astimezone(None)
+     elif self.kind == "oncalendar" and self.status == "up":
+         assert self.last_ping is not None
+===== hc.api.models.xǁCheckǁget_grace_start__mutmut_32
++++ hc/api/models.py
+@@ -22,7 +22,7 @@
+         # a timedelta to it later (in `going_down_after` and in `get_status`)
+         # may yield incorrect results during DST transitions.
+         result = result.astimezone(timezone.utc)
+-    elif self.kind == "oncalendar" and self.status == "up":
++    elif self.kind == "oncalendar" or self.status == "up":
+         assert self.last_ping is not None
+         last_local = self.last_ping.astimezone(ZoneInfo(self.tz))
+===== hc.api.models.xǁCheckǁget_grace_start__mutmut_41
++++ hc/api/models.py
+@@ -24,7 +24,7 @@
+         result = result.astimezone(timezone.utc)
+     elif self.kind == "oncalendar" and self.status == "up":
+         assert self.last_ping is not None
+-        last_local = self.last_ping.astimezone(ZoneInfo(self.tz))
++        last_local = self.last_ping.astimezone(None)
+         try:
+             result = next(OnCalendar(self.schedule, last_local))
+===== hc.api.models.xǁCheckǁget_grace_start__mutmut_50
++++ hc/api/models.py
+@@ -28,7 +28,7 @@
+         try:
+             result = next(OnCalendar(self.schedule, last_local))
+             # Same as for cron, convert back to UTC:
+-            result = result.astimezone(timezone.utc)
++            result = result.astimezone(None)
+         except StopIteration:
+             result = NEVER
+===== hc.api.models.xǁCheckǁget_grace_start__mutmut_51
++++ hc/api/models.py
+@@ -30,7 +30,7 @@
+             # Same as for cron, convert back to UTC:
+             result = result.astimezone(timezone.utc)
+         except StopIteration:
+-            result = NEVER
++            result = None
+ 
+     if with_started and self.last_start and self.status != "down":
+===== hc.api.models.xǁCheckǁget_status__mutmut_1
++++ hc/api/models.py
+@@ -1,4 +1,4 @@
+-def get_status(self, *, with_started: bool = False) -> str:
++def get_status(self, *, with_started: bool = True) -> str:
+     """Return current status for display."""
+     frozen_now = now()
+ 
+===== hc.api.models.xǁCheckǁget_status__mutmut_17
++++ hc/api/models.py
+@@ -11,7 +11,7 @@
+     if self.status in ("new", "paused", "down"):
+         return self.status
+ 
+-    grace_start = self.get_grace_start(with_started=False)
++    grace_start = self.get_grace_start(with_started=None)
+     if grace_start is None:
+         # next elapse is "never", so this check will stay up indefinitely
+===== hc.api.models.xǁCheckǁchannels_str__mutmut_1
++++ hc/api/models.py
+@@ -2,7 +2,7 @@
+     """Return a comma-separated string of assigned channel codes."""
+ 
+     # Is this an unsaved instance?
+-    if not self.id:
++    if self.id:
+         return ""
+ 
+===== hc.api.models.xǁCheckǁchannels_str__mutmut_3
++++ hc/api/models.py
+@@ -7,5 +7,5 @@
+ 
+     # self.channel_set may already be prefetched.
+     # Sort in python to make sure we don't run additional queries
+-    codes = [str(channel.code) for channel in self.channel_set.all()]
++    codes = [str(None) for channel in self.channel_set.all()]
+     return ",".join(sorted(codes))
+===== hc.api.models.xǁCheckǁchannels_str__mutmut_5
++++ hc/api/models.py
+@@ -8,4 +8,4 @@
+     # self.channel_set may already be prefetched.
+     # Sort in python to make sure we don't run additional queries
+     codes = [str(channel.code) for channel in self.channel_set.all()]
+-    return ",".join(sorted(codes))
++    return "XX,XX".join(sorted(codes))
+===== hc.api.models.xǁCheckǁto_dict__mutmut_1
++++ hc/api/models.py
+@@ -1,4 +1,4 @@
+-def to_dict(self, *, readonly: bool = False, v: int = 3) -> CheckDict:
++def to_dict(self, *, readonly: bool = True, v: int = 3) -> CheckDict:
+     with_started = v == 1
+     result: CheckDict = {
+         "name": self.name,
+===== hc.api.models.xǁCheckǁto_dict__mutmut_2
++++ hc/api/models.py
+@@ -1,4 +1,4 @@
+-def to_dict(self, *, readonly: bool = False, v: int = 3) -> CheckDict:
++def to_dict(self, *, readonly: bool = False, v: int = 4) -> CheckDict:
+     with_started = v == 1
+     result: CheckDict = {
+         "name": self.name,
+===== hc.api.models.xǁCheckǁto_dict__mutmut_3
++++ hc/api/models.py
+@@ -1,5 +1,5 @@
+ def to_dict(self, *, readonly: bool = False, v: int = 3) -> CheckDict:
+-    with_started = v == 1
++    with_started = None
+     result: CheckDict = {
+         "name": self.name,
+         "slug": self.slug,
+===== hc.api.models.xǁCheckǁto_dict__mutmut_4
++++ hc/api/models.py
+@@ -1,5 +1,5 @@
+ def to_dict(self, *, readonly: bool = False, v: int = 3) -> CheckDict:
+-    with_started = v == 1
++    with_started = v != 1
+     result: CheckDict = {
+         "name": self.name,
+         "slug": self.slug,
+===== hc.api.models.xǁCheckǁto_dict__mutmut_5
++++ hc/api/models.py
+@@ -1,5 +1,5 @@
+ def to_dict(self, *, readonly: bool = False, v: int = 3) -> CheckDict:
+-    with_started = v == 1
++    with_started = v == 2
+     result: CheckDict = {
+         "name": self.name,
+         "slug": self.slug,
+===== hc.api.models.xǁCheckǁto_dict__mutmut_22
++++ hc/api/models.py
+@@ -7,7 +7,7 @@
+         "desc": self.desc,
+         "grace": int(self.grace.total_seconds()),
+         "n_pings": self.n_pings,
+-        "status": self.get_status(with_started=with_started),
++        "status": self.get_status(with_started=None),
+         "started": self.last_start is not None,
+         "last_ping": isostring(self.last_ping),
+===== hc.api.models.xǁCheckǁto_dict__mutmut_28
++++ hc/api/models.py
+@@ -9,7 +9,7 @@
+         "n_pings": self.n_pings,
+         "status": self.get_status(with_started=with_started),
+         "started": self.last_start is not None,
+-        "last_ping": isostring(self.last_ping),
++        "last_ping": isostring(None),
+         "next_ping": isostring(self.get_grace_start()),
+         "manual_resume": self.manual_resume,
+===== hc.api.models.xǁCheckǁto_dict__mutmut_31
++++ hc/api/models.py
+@@ -10,7 +10,7 @@
+         "status": self.get_status(with_started=with_started),
+         "started": self.last_start is not None,
+         "last_ping": isostring(self.last_ping),
+-        "next_ping": isostring(self.get_grace_start()),
++        "next_ping": isostring(None),
+         "manual_resume": self.manual_resume,
+         "methods": self.methods,
+===== hc.api.models.xǁCheckǁto_dict__mutmut_38
++++ hc/api/models.py
+@@ -13,7 +13,7 @@
+         "next_ping": isostring(self.get_grace_start()),
+         "manual_resume": self.manual_resume,
+         "methods": self.methods,
+-        "subject": self.success_kw if self.filter_subject else "",
++        "subject": self.success_kw if (self.filter_subject) and False else "",
+         "subject_fail": self.failure_kw if self.filter_subject else "",
+         "start_kw": self.start_kw,
+===== hc.api.models.xǁCheckǁto_dict__mutmut_39
++++ hc/api/models.py
+@@ -13,7 +13,7 @@
+         "next_ping": isostring(self.get_grace_start()),
+         "manual_resume": self.manual_resume,
+         "methods": self.methods,
+-        "subject": self.success_kw if self.filter_subject else "",
++        "subject": self.success_kw if (self.filter_subject) or True else "",
+         "subject_fail": self.failure_kw if self.filter_subject else "",
+         "start_kw": self.start_kw,
+===== hc.api.models.xǁCheckǁto_dict__mutmut_43
++++ hc/api/models.py
+@@ -14,7 +14,7 @@
+         "manual_resume": self.manual_resume,
+         "methods": self.methods,
+         "subject": self.success_kw if self.filter_subject else "",
+-        "subject_fail": self.failure_kw if self.filter_subject else "",
++        "subject_fail": self.failure_kw if (self.filter_subject) and False else "",
+         "start_kw": self.start_kw,
+         "success_kw": self.success_kw,
+===== hc.api.models.xǁCheckǁto_dict__mutmut_44
++++ hc/api/models.py
+@@ -14,7 +14,7 @@
+         "manual_resume": self.manual_resume,
+         "methods": self.methods,
+         "subject": self.success_kw if self.filter_subject else "",
+-        "subject_fail": self.failure_kw if self.filter_subject else "",
++        "subject_fail": self.failure_kw if (self.filter_subject) or True else "",
+         "start_kw": self.start_kw,
+         "success_kw": self.success_kw,
+===== hc.api.models.xǁCheckǁping__mutmut_68
++++ hc/api/models.py
+@@ -48,7 +48,7 @@
+ 
+         self.alert_after = self.going_down_after()
+         self.n_pings = models.F("n_pings") + 1
+-        body_lowercase = body.decode(errors="replace").lower()
++        body_lowercase = body.decode(errors="XXreplaceXX").lower()
+         self.has_confirmation_link = "confirm" in body_lowercase
+         self.save()
+===== hc.api.models.xǁCheckǁping__mutmut_69
++++ hc/api/models.py
+@@ -48,7 +48,7 @@
+ 
+         self.alert_after = self.going_down_after()
+         self.n_pings = models.F("n_pings") + 1
+-        body_lowercase = body.decode(errors="replace").lower()
++        body_lowercase = body.decode(errors="REPLACE").lower()
+         self.has_confirmation_link = "confirm" in body_lowercase
+         self.save()
+===== hc.api.models.xǁCheckǁping__mutmut_79
++++ hc/api/models.py
+@@ -55,7 +55,7 @@
+         ping = Ping(owner=self)
+         ping.n = self.n_pings
+         ping.created = frozen_now
+-        if action in ("start", "fail", "ign", "log"):
++        if action in ("XXstartXX", "fail", "ign", "log"):
+             ping.kind = action
+ 
+===== hc.api.models.xǁCheckǁping__mutmut_80
++++ hc/api/models.py
+@@ -55,7 +55,7 @@
+         ping = Ping(owner=self)
+         ping.n = self.n_pings
+         ping.created = frozen_now
+-        if action in ("start", "fail", "ign", "log"):
++        if action in ("START", "fail", "ign", "log"):
+             ping.kind = action
+ 
+===== hc.api.models.xǁCheckǁping__mutmut_81
++++ hc/api/models.py
+@@ -55,7 +55,7 @@
+         ping = Ping(owner=self)
+         ping.n = self.n_pings
+         ping.created = frozen_now
+-        if action in ("start", "fail", "ign", "log"):
++        if action in ("start", "XXfailXX", "ign", "log"):
+             ping.kind = action
+ 
+===== hc.api.models.xǁCheckǁping__mutmut_82
++++ hc/api/models.py
+@@ -55,7 +55,7 @@
+         ping = Ping(owner=self)
+         ping.n = self.n_pings
+         ping.created = frozen_now
+-        if action in ("start", "fail", "ign", "log"):
++        if action in ("start", "FAIL", "ign", "log"):
+             ping.kind = action
+ 
+===== hc.api.models.xǁCheckǁping__mutmut_85
++++ hc/api/models.py
+@@ -55,7 +55,7 @@
+         ping = Ping(owner=self)
+         ping.n = self.n_pings
+         ping.created = frozen_now
+-        if action in ("start", "fail", "ign", "log"):
++        if action in ("start", "fail", "ign", "XXlogXX"):
+             ping.kind = action
+ 
+===== hc.api.models.xǁCheckǁping__mutmut_86
++++ hc/api/models.py
+@@ -55,7 +55,7 @@
+         ping = Ping(owner=self)
+         ping.n = self.n_pings
+         ping.created = frozen_now
+-        if action in ("start", "fail", "ign", "log"):
++        if action in ("start", "fail", "ign", "LOG"):
+             ping.kind = action
+ 
+===== hc.api.models.xǁCheckǁping__mutmut_93
++++ hc/api/models.py
+@@ -63,7 +63,7 @@
+         ping.method = method
+         # If User-Agent is longer than 200 characters, truncate it:
+         ping.ua = ua[:200]
+-        if len(body) > 100 and settings.S3_BUCKET:
++        if len(body) > 100 or settings.S3_BUCKET:
+             ping.object_size = len(body)
+         else:
+===== hc.api.models.xǁCheckǁping__mutmut_94
++++ hc/api/models.py
+@@ -63,7 +63,7 @@
+         ping.method = method
+         # If User-Agent is longer than 200 characters, truncate it:
+         ping.ua = ua[:200]
+-        if len(body) > 100 and settings.S3_BUCKET:
++        if len(body) >= 100 and settings.S3_BUCKET:
+             ping.object_size = len(body)
+         else:
+===== hc.api.models.xǁCheckǁping__mutmut_95
++++ hc/api/models.py
+@@ -63,7 +63,7 @@
+         ping.method = method
+         # If User-Agent is longer than 200 characters, truncate it:
+         ping.ua = ua[:200]
+-        if len(body) > 100 and settings.S3_BUCKET:
++        if len(body) > 101 and settings.S3_BUCKET:
+             ping.object_size = len(body)
+         else:
+===== hc.api.models.xǁCheckǁping__mutmut_97
++++ hc/api/models.py
+@@ -67,7 +67,7 @@
+             ping.object_size = len(body)
+         else:
+             ping.body_raw = body
+-        ping.rid = rid
++        ping.rid = None
+         ping.exitstatus = exitstatus
+         ping.save()
+===== hc.api.models.xǁCheckǁprune__mutmut_1
++++ hc/api/models.py
+@@ -1,4 +1,4 @@
+-def prune(self, wait: bool = False) -> None:
++def prune(self, wait: bool = True) -> None:
+     """Remove old pings and notifications."""
+ 
+     threshold = self.n_pings - self.project.owner_profile.ping_log_limit
+===== hc.api.models.xǁCheckǁprune__mutmut_15
++++ hc/api/models.py
+@@ -25,7 +25,7 @@
+         # "we need the current month and full two previous months of data".
+         # We could calculate this precisely, but 3*31 is close enough and
+         # much simpler.
+-        flip_threshold = min(ping.created, now() - td(days=93))
++        flip_threshold = min(ping.created, now() + td(days=93))
+         self.flip_set.filter(created__lt=flip_threshold).delete()
+     except Ping.DoesNotExist:
+===== hc.api.models.xǁCheckǁprune__mutmut_17
++++ hc/api/models.py
+@@ -25,7 +25,7 @@
+         # "we need the current month and full two previous months of data".
+         # We could calculate this precisely, but 3*31 is close enough and
+         # much simpler.
+-        flip_threshold = min(ping.created, now() - td(days=93))
++        flip_threshold = min(ping.created, now() - td(days=94))
+         self.flip_set.filter(created__lt=flip_threshold).delete()
+     except Ping.DoesNotExist:
+===== hc.api.models.xǁCheckǁcreate_flip__mutmut_1
++++ hc/api/models.py
+@@ -1,5 +1,5 @@
+ def create_flip(
+-    self, new_status: str, reason: str = "", mark_as_processed: bool = False
++    self, new_status: str, reason: str = "XXXX", mark_as_processed: bool = False
+ ) -> None:
+     """Create a Flip object for this check.
+ 
+===== hc.api.models.xǁCheckǁcreate_flip__mutmut_2
++++ hc/api/models.py
+@@ -1,5 +1,5 @@
+ def create_flip(
+-    self, new_status: str, reason: str = "", mark_as_processed: bool = False
++    self, new_status: str, reason: str = "", mark_as_processed: bool = True
+ ) -> None:
+     """Create a Flip object for this check.
+ 
