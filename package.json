@@ -1,0 +1,32 @@
+{
+  "name": "healthchecks",
+  "version": "1.0.0",
+  "description": "[![Tests](https://github.com/healthchecks/healthchecks/actions/workflows/tests.yml/badge.svg)](https://github.com/healthchecks/healthchecks/actions/workflows/tests.yml) [![Coverage Status](https://coveralls.io/repos/healthchecks/healthchecks/badge.svg?branch=master&service=github)](https://coveralls.io/github/healthchecks/healthchecks?branch=master)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test:e2e": "playwright test",
+    "axe": "playwright test tests/e2e/accessibility.spec.js",
+    "lighthouse": "node tests/e2e/lighthouse.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashar1x/healthchecks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashar1x/healthchecks/issues"
+  },
+  "homepage": "https://github.com/ashar1x/healthchecks#readme",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.1",
+    "@playwright/test": "^1.65.1",
+    "lighthouse": "^13.6.0"
+  },
+  "type": "module"
+}

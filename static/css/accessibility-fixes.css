@@ -1,0 +1,10 @@
+body.page-checks .btn-primary {
+    background-color: #14804a;
+    border-color: #14804a;
+    color: #ffffff;
+}
+
+body.page-checks footer a {
+    color: #005a9c;
+    text-decoration: underline;
+}

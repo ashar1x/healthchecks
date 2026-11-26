@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{% static 'css/variables.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/bootstrap-colors.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/accessibility-fixes.css' %}" type="text/css">
 
     <link rel="stylesheet" href="{% static 'css/add_credential.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/add_project_modal.css' %}" type="text/css">
@@ -204,7 +205,9 @@
 
     {% block containers %}
     <div class="container{% if page == "checks" or page == "details" or page == "log" %}-fluid{% endif %}">
-        {% block content %}{% endblock %}
+        <main>
+            {% block content %}{% endblock %}
+        </main>
     </div>
     {% endblock %}
 

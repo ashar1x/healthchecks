@@ -13,3 +13,7 @@ mutmut_venv/
 htmlcov/
 
 mutmut-run.log
+django-server.log
+node_modules/
+test-results/
+tests/e2e/.auth/

@@ -12,6 +12,8 @@
 
 {% block content %}
 
+<h1 class="sr-only">Checks for {{ project.name }}</h1>
+
 {% if num_available < 0 %}
 <div class="row">
     <div class="col-sm-12">
@@ -71,9 +73,10 @@
             id="search"
             type="text"
             class="form-control"
+            aria-label="Search checks"
             value="{{ search }}">
         <div id="filters" class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-label="Filter checks">
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu dropdown-menu-right">
