@@ -1,0 +1,371 @@
+{
+  "generated_at": "2026-11-26T16:49:58.097536+00:00",
+  "python": "3.12.3",
+  "pytest": "see venv requirements",
+  "operators": [
+    {
+      "name": "BoundaryValueOperator",
+      "rule": "BR-01",
+      "target": "hc/front/forms.py AddCheckForm.timeout / .grace",
+      "mutation": "min_value 60 -> 59/61; max_value 31536000 -> 31535999/31536001"
+    },
+    {
+      "name": "BooleanNegationOperator",
+      "rule": "BR-02/BR-03",
+      "target": "hc/api/models.py get_status/get_grace_start/ping",
+      "mutation": "negate condition; flip >=/==; swap and/or; min->max"
+    }
+  ],
+  "summary": {
+    "total": 20,
+    "killed": 20,
+    "survived": 0,
+    "score": 100.0
+  },
+  "mutants": [
+    {
+      "id": "BOUNDARY-1",
+      "operator": "BoundaryValueOperator",
+      "rule": "BR-01",
+      "file": "hc/front/forms.py",
+      "description": "timeout: exclude valid minimum (60 -> 61)",
+      "start": 1239,
+      "end": 1305,
+      "replacement": "    timeout = forms.IntegerField(min_value=61, max_value=31536000)",
+      "tests": [
+        "tests/team/unit/test_validation_bva.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 10 passed, 8 warnings in 6.16s"
+    },
+    {
+      "id": "BOUNDARY-2",
+      "operator": "BoundaryValueOperator",
+      "rule": "BR-01",
+      "file": "hc/front/forms.py",
+      "description": "timeout: include invalid below-minimum (60 -> 59)",
+      "start": 1239,
+      "end": 1305,
+      "replacement": "    timeout = forms.IntegerField(min_value=59, max_value=31536000)",
+      "tests": [
+        "tests/team/unit/test_validation_bva.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 8 passed, 8 warnings in 6.24s"
+    },
+    {
+      "id": "BOUNDARY-3",
+      "operator": "BoundaryValueOperator",
+      "rule": "BR-01",
+      "file": "hc/front/forms.py",
+      "description": "timeout: exclude valid maximum (31536000 -> 31535999)",
+      "start": 1239,
+      "end": 1305,
+      "replacement": "    timeout = forms.IntegerField(min_value=60, max_value=31535999)",
+      "tests": [
+        "tests/team/unit/test_validation_bva.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 16 passed, 8 warnings in 6.56s"
+    },
+    {
+      "id": "BOUNDARY-4",
+      "operator": "BoundaryValueOperator",
+      "rule": "BR-01",
+      "file": "hc/front/forms.py",
+      "description": "timeout: include invalid above-maximum (31536000 -> 31536001)",
+      "start": 1239,
+      "end": 1305,
+      "replacement": "    timeout = forms.IntegerField(min_value=60, max_value=31536001)",
+      "tests": [
+        "tests/team/unit/test_validation_bva.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 18 passed, 8 warnings in 6.69s"
+    },
+    {
+      "id": "BOUNDARY-5",
+      "operator": "BoundaryValueOperator",
+      "rule": "BR-01",
+      "file": "hc/front/forms.py",
+      "description": "grace: exclude valid minimum (60 -> 61)",
+      "start": 1443,
+      "end": 1507,
+      "replacement": "    grace = forms.IntegerField(min_value=61, max_value=31536000)",
+      "tests": [
+        "tests/team/unit/test_validation_bva.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 10 passed, 8 warnings in 6.81s"
+    },
+    {
+      "id": "BOUNDARY-6",
+      "operator": "BoundaryValueOperator",
+      "rule": "BR-01",
+      "file": "hc/front/forms.py",
+      "description": "grace: include invalid below-minimum (60 -> 59)",
+      "start": 1443,
+      "end": 1507,
+      "replacement": "    grace = forms.IntegerField(min_value=59, max_value=31536000)",
+      "tests": [
+        "tests/team/unit/test_validation_bva.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 9 passed, 8 warnings in 6.84s"
+    },
+    {
+      "id": "BOUNDARY-7",
+      "operator": "BoundaryValueOperator",
+      "rule": "BR-01",
+      "file": "hc/front/forms.py",
+      "description": "grace: exclude valid maximum (31536000 -> 31535999)",
+      "start": 1443,
+      "end": 1507,
+      "replacement": "    grace = forms.IntegerField(min_value=60, max_value=31535999)",
+      "tests": [
+        "tests/team/unit/test_validation_bva.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 17 passed, 8 warnings in 6.68s"
+    },
+    {
+      "id": "BOUNDARY-8",
+      "operator": "BoundaryValueOperator",
+      "rule": "BR-01",
+      "file": "hc/front/forms.py",
+      "description": "grace: include invalid above-maximum (31536000 -> 31536001)",
+      "start": 1443,
+      "end": 1507,
+      "replacement": "    grace = forms.IntegerField(min_value=60, max_value=31536001)",
+      "tests": [
+        "tests/team/unit/test_validation_bva.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 19 passed, 8 warnings in 5.93s"
+    },
+    {
+      "id": "BOOL-1",
+      "operator": "BooleanNegationOperator",
+      "rule": "BR-02/BR-03",
+      "file": "hc/api/models.py",
+      "description": "running state inverted in get_status",
+      "start": 13998,
+      "end": 14084,
+      "replacement": "        if not self.last_start:\n            if frozen_now >= self.last_start + self.grace:",
+      "tests": [
+        "tests/team/unit/test_get_status_mcc.py",
+        "tests/team/unit/test_get_status_edges.py",
+        "tests/team/unit/test_ping_state_machine.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 3 passed in 5.74s"
+    },
+    {
+      "id": "BOOL-2",
+      "operator": "BooleanNegationOperator",
+      "rule": "BR-02/BR-03",
+      "file": "hc/api/models.py",
+      "description": "grace comparison >= changed to >",
+      "start": 14038,
+      "end": 14084,
+      "replacement": "if frozen_now > self.last_start + self.grace:",
+      "tests": [
+        "tests/team/unit/test_get_status_mcc.py",
+        "tests/team/unit/test_get_status_edges.py",
+        "tests/team/unit/test_ping_state_machine.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 164 passed in 6.91s"
+    },
+    {
+      "id": "BOOL-3",
+      "operator": "BooleanNegationOperator",
+      "rule": "BR-02/BR-03",
+      "file": "hc/api/models.py",
+      "description": "status set membership negated",
+      "start": 14188,
+      "end": 14232,
+      "replacement": "if self.status not in (\"new\", \"paused\", \"down\"):",
+      "tests": [
+        "tests/team/unit/test_get_status_mcc.py",
+        "tests/team/unit/test_get_status_edges.py",
+        "tests/team/unit/test_ping_state_machine.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 17 passed in 6.65s"
+    },
+    {
+      "id": "BOOL-4",
+      "operator": "BooleanNegationOperator",
+      "rule": "BR-02/BR-03",
+      "file": "hc/api/models.py",
+      "description": "grace_start None test negated",
+      "start": 14336,
+      "end": 14359,
+      "replacement": "if grace_start is not None:",
+      "tests": [
+        "tests/team/unit/test_get_status_mcc.py",
+        "tests/team/unit/test_get_status_edges.py",
+        "tests/team/unit/test_ping_state_machine.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 17 passed in 5.78s"
+    },
+    {
+      "id": "BOOL-5",
+      "operator": "BooleanNegationOperator",
+      "rule": "BR-02/BR-03",
+      "file": "hc/api/models.py",
+      "description": "grace_end boundary >= changed to >",
+      "start": 14516,
+      "end": 14543,
+      "replacement": "if frozen_now > grace_end:",
+      "tests": [
+        "tests/team/unit/test_get_status_mcc.py",
+        "tests/team/unit/test_get_status_edges.py",
+        "tests/team/unit/test_ping_state_machine.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 165 passed in 6.24s"
+    },
+    {
+      "id": "BOOL-6",
+      "operator": "BooleanNegationOperator",
+      "rule": "BR-02/BR-03",
+      "file": "hc/api/models.py",
+      "description": "grace_start boundary >= changed to >",
+      "start": 14579,
+      "end": 14608,
+      "replacement": "if frozen_now > grace_start:",
+      "tests": [
+        "tests/team/unit/test_get_status_mcc.py",
+        "tests/team/unit/test_get_status_edges.py",
+        "tests/team/unit/test_ping_state_machine.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 166 passed in 6.44s"
+    },
+    {
+      "id": "BOOL-7",
+      "operator": "BooleanNegationOperator",
+      "rule": "BR-02/BR-03",
+      "file": "hc/api/models.py",
+      "description": "min() changed to max() in get_grace_start",
+      "start": 13272,
+      "end": 13309,
+      "replacement": "result = max(result, self.last_start)",
+      "tests": [
+        "tests/team/unit/test_get_status_mcc.py",
+        "tests/team/unit/test_get_status_edges.py",
+        "tests/team/unit/test_ping_state_machine.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 151 passed in 6.73s"
+    },
+    {
+      "id": "BOOL-8",
+      "operator": "BooleanNegationOperator",
+      "rule": "BR-02/BR-03",
+      "file": "hc/api/models.py",
+      "description": "compound and changed to or in get_grace_start",
+      "start": 13197,
+      "end": 13259,
+      "replacement": "if with_started or self.last_start and self.status != \"down\":",
+      "tests": [
+        "tests/team/unit/test_get_status_mcc.py",
+        "tests/team/unit/test_get_status_edges.py",
+        "tests/team/unit/test_ping_state_machine.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed in 7.26s"
+    },
+    {
+      "id": "BOOL-9",
+      "operator": "BooleanNegationOperator",
+      "rule": "BR-02/BR-03",
+      "file": "hc/api/models.py",
+      "description": "cron condition and changed to or",
+      "start": 11783,
+      "end": 11832,
+      "replacement": "if self.kind == \"simple\" or self.status == \"up\":",
+      "tests": [
+        "tests/team/unit/test_get_status_mcc.py",
+        "tests/team/unit/test_get_status_edges.py",
+        "tests/team/unit/test_ping_state_machine.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 3 passed in 6.25s"
+    },
+    {
+      "id": "BOOL-10",
+      "operator": "BooleanNegationOperator",
+      "rule": "BR-02/BR-03",
+      "file": "hc/api/models.py",
+      "description": "paused-state condition and changed to or in ping",
+      "start": 19832,
+      "end": 19882,
+      "replacement": "if self.status == \"paused\" or self.manual_resume:",
+      "tests": [
+        "tests/team/unit/test_get_status_mcc.py",
+        "tests/team/unit/test_get_status_edges.py",
+        "tests/team/unit/test_ping_state_machine.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed, 8 passed in 6.67s"
+    },
+    {
+      "id": "BOOL-11",
+      "operator": "BooleanNegationOperator",
+      "rule": "BR-02/BR-03",
+      "file": "hc/api/models.py",
+      "description": "fail/success outcome swapped in ping",
+      "start": 20834,
+      "end": 20883,
+      "replacement": "new_status = \"up\" if action == \"fail\" else \"down\"",
+      "tests": [
+        "tests/team/unit/test_get_status_mcc.py",
+        "tests/team/unit/test_get_status_edges.py",
+        "tests/team/unit/test_ping_state_machine.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed in 5.63s"
+    },
+    {
+      "id": "BOOL-12",
+      "operator": "BooleanNegationOperator",
+      "rule": "BR-02/BR-03",
+      "file": "hc/api/models.py",
+      "description": "state-change guard negated in ping",
+      "start": 20900,
+      "end": 20929,
+      "replacement": "if self.status == new_status:",
+      "tests": [
+        "tests/team/unit/test_get_status_mcc.py",
+        "tests/team/unit/test_get_status_edges.py",
+        "tests/team/unit/test_ping_state_machine.py"
+      ],
+      "status": "killed",
+      "pytest_exit_code": 1,
+      "pytest_summary": "1 failed in 5.80s"
+    }
+  ]
+}

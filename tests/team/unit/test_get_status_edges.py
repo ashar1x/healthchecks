@@ -142,3 +142,21 @@ def test_FR08_BR03_clamped_last_duration(last_duration: td | None, expected: td 
     check = make_check()
     check.last_duration = last_duration
     assert check.clamped_last_duration() == expected
+
+
+def test_FR10_BR02_running_state_down_at_exact_last_start_plus_grace() -> None:
+    check = make_check(status="up", last_ping=NOW - TIMEOUT, last_start=NOW - GRACE)
+    with time_machine.travel(NOW, tick=False):
+        assert check.get_status() == "down"
+
+
+def test_FR10_BR02_down_at_exact_grace_end() -> None:
+    check = make_check(status="up", last_ping=NOW - TIMEOUT - GRACE)
+    with time_machine.travel(NOW, tick=False):
+        assert check.get_status() == "down"
+
+
+def test_FR10_BR02_grace_at_exact_grace_start() -> None:
+    check = make_check(status="up", last_ping=NOW - TIMEOUT)
+    with time_machine.travel(NOW, tick=False):
+        assert check.get_status() == "grace"
