@@ -1,0 +1,77 @@
+name: Mutation Testing
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - 'hc/api/**'
+      - 'hc/accounts/**'
+      - 'hc/front/**'
+      - 'tests/team/**'
+      - 'setup.cfg'
+      - '.github/workflows/mutation.yml'
+  push:
+    branches: [master]
+    paths:
+      - 'hc/api/**'
+      - 'hc/accounts/**'
+      - 'hc/front/**'
+      - 'tests/team/**'
+      - 'setup.cfg'
+      - '.github/workflows/mutation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  mutation:
+    name: Mutation Testing (80% gate)
+    runs-on: ubuntu-26.04
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt -r requirements-dev.txt
+          pip install mutmut coverage pytest
+
+      - name: Remove pytest-randomly (conflicts with mutmut)
+        run: pip uninstall pytest-randomly -y
+
+      - name: Run Mutation Testing
+        env:
+          MUTMUT_PYTEST_ARGS: ""
+        run: |
+          mutmut run --max-runtime=1800
+
+      - name: Mutation Results
+        run: |
+          mutmut results
+
+      - name: Mutation Score Gate
+        run: |
+          SCORE=$(mutmut results --json | python -c "
+import json, sys
+data = json.load(sys.stdin)
+killed = data.get('killed', 0)
+survived = data.get('survived', 0)
+total = killed + survived
+if total > 0:
+    score = round(100 * killed / total, 1)
+    print(f'Mutation score: {score}% (killed: {killed}, survived: {survived})')
+    if score < 80:
+        print('::error::Mutation score below 80% threshold')
+        sys.exit(1)
+else:
+    print('::error::No mutations found')
+    sys.exit(1)
+          ")
+          echo "$SCORE"
