@@ -34,9 +34,28 @@ Enable branch protection on `area1/ashar` and `master`: require a pull request
 and require the status checks above. Without this, a red gate does not block a
 merge by itself.
 
+## Recorded runs on PR #10
+
+| Check | Result | Run |
+|---|---|---|
+| No escape hatches | pass | https://github.com/ashar1x/healthchecks/actions/runs/46030378578/job/140612366746 |
+| Unit tests and coverage | pass | https://github.com/ashar1x/healthchecks/actions/runs/46030378578/job/140612366603 |
+| API tests | pass | https://github.com/ashar1x/healthchecks/actions/runs/46030378578/job/140612366331 |
+| Mutation gate (unified pipeline) | pass | https://github.com/ashar1x/healthchecks/actions/runs/46030378578/job/140612366712 |
+| Mutation gate (standalone workflow) | pass | https://github.com/ashar1x/healthchecks/actions/runs/46030378662/job/140612366065 |
+| Playwright browser tests | fail | https://github.com/ashar1x/healthchecks/actions/runs/46030378578/job/140612366714 |
+| SonarQube quality gate | fail | https://github.com/ashar1x/healthchecks/actions/runs/46030378578/job/140612366982 |
+
+PR #10 is therefore a **pull request the pipeline blocked**. The two failures
+are environmental: the Sonar job needs the `SONAR_TOKEN` Actions secret, and
+the Playwright job needs a log review on Ashar's machine (the same 13 tests
+pass locally). A fail-then-pass PR cannot be completed until both are fixed;
+that is left to Ashar.
+
 ## Open items
 
-- A PR that the pipeline blocked and a fail-then-pass PR with both run links
-  are still being prepared.
+- Add the `SONAR_TOKEN` secret and re-run the Sonar job.
+- Diagnose the Playwright CI failure from the job log and re-run.
 - The coverage threshold on the measured business-logic files needs team
   approval before it is enforced.
+
