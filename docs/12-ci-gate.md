@@ -10,7 +10,7 @@ that this pipeline is the only gate.
 
 | Job | What it proves | Threshold |
 |---|---|---|
-| workflow-lint | No `continue-on-error`, `|| true`, `--exit-zero` or `allow_failure` in any workflow | grep must find nothing |
+| workflow-lint | No `continue-on-error`, `|| true`, `--exit-zero` or `allow_failure` in any workflow | `tools/evidence/check_workflows.py` must find nothing |
 | unit-coverage | Unit/API/recovery tests pass and `coverage.xml` is produced | tests exit 0; threshold on measured functions still pending D2 confirmation |
 | api-tests | FR-01/02/04 CRUD and generated-data tests pass | tests exit 0 |
 | e2e | 13 Playwright tests pass | tests exit 0 |

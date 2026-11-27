@@ -16,11 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Reject banned CI patterns
-        run: |
-          if grep -R -nE 'continue-on-error|\|\| true|--exit-zero|allow_failure' .github/workflows/; then
-            echo "::error::Banned escape-hatch pattern found"
-            exit 1
-          fi
+        run: python tools/evidence/check_workflows.py
 
   unit-coverage:
     name: Unit tests and coverage
