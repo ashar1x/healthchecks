@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>final-report</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>@page{size:A4;margin:18mm}body{font-family:Arial,sans-serif;font-size:10pt;line-height:1.35}h1,h2{color:#174a7e}table{border-collapse:collapse;width:100%;font-size:8.5pt}th,td{border:1px solid #999;padding:3px 5px;vertical-align:top}th{background:#e8eef5}.cover{page-break-after:always;text-align:center;padding-top:60mm}.cover h1{font-size:24pt}.cover h2{font-size:18pt}a{color:#174a7e}</style></head>
+<body><div class="cover"><h1>SE3002 Software Quality Engineering</h1><h2>Final Project Report</h2><p>Ashar Ahmed (24i-3072) &middot; Taimoor Khaliq (24i-3052) &middot; Ali Haider (24i-3102)</p><p>Section C &middot; 29 November 2026</p><p>https://github.com/ashar1x/healthchecks</p></div>
+<h1 id="se3002-software-quality-engineering-final-project-report">SE3002
+Software Quality Engineering — Final Project Report</h1>
+<p><strong>Project:</strong> automated testing of Healthchecks
+(open-source MIS, BSD 3-clause). <strong>Team:</strong> Ashar Ahmed
+(24i-3072), Taimoor Khaliq (24i-3052), Ali Haider (24i-3102), Section C.
+<strong>Repository:</strong> https://github.com/ashar1x/healthchecks
+<strong>Upstream:</strong> https://github.com/healthchecks/healthchecks
+(commit tagged <code>baseline</code>). <strong>Submission:</strong> 29
+November 2026.</p>
+<h2 id="scope-and-test-basis">1. Scope and test basis</h2>
+<p>Two related workflows in the Checks module: check management (create,
+edit, pause, resume) and ping handling (status
+new/up/grace/down/paused/started). The shared record is the Check
+(timeout, grace, status, last ping, last start, ping count). Twelve
+functional requirements, four business rules and six use cases are fixed
+in <code>docs/01-scope-and-test-basis.md</code>. Business rules: BR-01
+boundary (60..31536000 s), BR-02 compound status decision, BR-03 state
+transitions, BR-04 role and key permissions. Roles: owner, rw member, ro
+member, rw key, ro key, unauthenticated. Full scope and assumptions are
+in <code>docs/01</code> and <code>docs/00-brief-notes.md</code>.</p>
+<h2 id="area-ownership-and-commits">2. Area ownership and commits</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Area</th>
+<th>Owner</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1 — static analysis, white-box, mutation, CI</td>
+<td>Ashar Ahmed</td>
+<td><code>docs/02</code>, <code>docs/08</code>, <code>docs/11</code>,
+<code>docs/12-ci-gate.md</code></td>
+</tr>
+<tr class="even">
+<td>2 — API testing, data generation</td>
+<td>Taimoor Khaliq</td>
+<td><code>docs/09-api-testing.md</code>, <code>docs/10</code>,
+<code>tests/team/api/</code></td>
+</tr>
+<tr class="odd">
+<td>3 — use cases, usability, security, performance</td>
+<td>Ali Haider</td>
+<td><code>docs/16</code>, <code>docs/14</code>, <code>docs/15</code>,
+<code>docs/16-performance-recovery.md</code></td>
+</tr>
+<tr class="even">
+<td>Shared test management</td>
+<td>Taimoor leads; all contribute</td>
+<td><code>docs/03</code>–<code>docs/07</code>,
+<code>docs/18-weekly-reports/</code>,
+<code>docs/19-completion-report.md</code></td>
+</tr>
+<tr class="odd">
+<td>Defect management and RCA</td>
+<td>Ali leads</td>
+<td>GitHub Issues #6–#9, <code>docs/17-defects/</code></td>
+</tr>
+</tbody>
+</table>
+<p>Each member commits under their own identity; PRs #1, #3, #4 and #5
+are merged into <code>area1/ashar</code>.</p>
+<h2 id="risk-register-and-traceability">3. Risk register and
+traceability</h2>
+<p>The 5 × 5 register in <code>docs/05-risk-register.md</code> holds 15
+product and 4 project risks. Technique and depth follow the risk level:
+high risks get MCC/MC-DC, EP/3-point BVA, decision-table and
+state-transition tests plus mutation and a CI gate. Exit criteria
+RC-1/RC-2/RC-3 are in <code>docs/06-exit-criteria.md</code>. The
+traceability matrix <code>docs/07-traceability.csv</code> links FR → BR
+→ RISK → test → defect; <code>tools/traceability/coverage.py</code>
+computes 12/12 FR = 100% executed coverage from 67 test functions
+(<code>evidence/raw/requirements-coverage.json</code>, manifest IDs
+EV-004/EV-005).</p>
+<h2 id="results-by-activity">4. Results by activity</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Activity</th>
+<th>Result</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SonarQube and hand V(G)</td>
+<td>metrics and complexity comparison recorded</td>
+<td><code>docs/02</code>, <code>evidence/raw/sonar-*.json</code></td>
+</tr>
+<tr class="even">
+<td>White-box</td>
+<td>225 pytest tests; MCC 128 rows, 7 MC/DC pairs</td>
+<td><code>docs/08</code>,
+<code>evidence/raw/pytest-report.json</code></td>
+</tr>
+<tr class="odd">
+<td>API and BVA</td>
+<td>CRUD FR-01/02/04 with read-back; 3-point BVA on timeout/grace</td>
+<td><code>tests/team/api/</code>,
+<code>docs/09-api-testing.md</code></td>
+</tr>
+<tr class="even">
+<td>Test data generation</td>
+<td>OpenAPI spec, deterministic generator, change-two demo</td>
+<td><code>spec/</code>, <code>tools/testgen/</code>,
+<code>docs/10</code></td>
+</tr>
+<tr class="odd">
+<td>Use cases and browser</td>
+<td>13 Playwright tests covering main, alternative and exception
+flows</td>
+<td><code>docs/16</code>, <code>tests/e2e/</code></td>
+</tr>
+<tr class="even">
+<td>Mutation</td>
+<td>365 mutants, 310 killed, 52 survived, 3 undetected; 84.9% full /
+88.3% business-rule; custom operators 20/20 killed; 24 survivors
+analysed</td>
+<td><code>docs/11</code>, <code>evidence/mutation/</code></td>
+</tr>
+<tr class="odd">
+<td>Usability/accessibility</td>
+<td>Lighthouse checks 72→100; axe violations 8→2 on fixed checks screen;
+keyboard submit verified</td>
+<td><code>docs/14</code>, <code>evidence/phase9/</code></td>
+</tr>
+<tr class="even">
+<td>Security</td>
+<td>5/5 access decisions; ZAP passive 498 alerts; pip-audit 0/54; npm
+audit 0</td>
+<td><code>docs/15</code>, <code>evidence/security/</code></td>
+</tr>
+<tr class="odd">
+<td>Performance/recovery</td>
+<td>4 k6 runs, worst p95 143.1 ms vs 500 ms, 0 failures; recovery test
+passes</td>
+<td><code>docs/16-performance-recovery.md</code>,
+<code>evidence/performance/</code></td>
+</tr>
+<tr class="even">
+<td>Defects</td>
+<td>Issues #6–#9; RCAs and Pareto</td>
+<td><code>docs/17-defects/</code>,
+<code>evidence/raw/pareto.svg</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="findings-with-root-cause-severity-risk-and-fix">5. Findings with
+root cause, severity, risk and fix</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Finding</th>
+<th>Root cause</th>
+<th>Severity / priority</th>
+<th>Risk</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>#6 vendored DOMPurify vulnerable</td>
+<td>upstream asset inherited at baseline and never version-checked</td>
+<td>High / P1</td>
+<td>RISK-03/04</td>
+<td>upgrade vendored file via documented PR
+(<code>docs/17-defects/rca-01-def01.md</code>)</td>
+</tr>
+<tr class="even">
+<td>#7 bare 400 on invalid timeout</td>
+<td>view returns <code>HttpResponseBadRequest()</code> with no field
+error</td>
+<td>Medium / P2</td>
+<td>RISK-02, FR-06/BR-01</td>
+<td>render field error naming the 60 s / 365-day bounds</td>
+</tr>
+<tr class="odd">
+<td>#8 traceability 0%</td>
+<td>Phase 4 JSON never regenerated after tests were added</td>
+<td>High / P1</td>
+<td>RISK-15</td>
+<td>regenerate from pytest JSON report; fixed to 100%
+(<code>rca-02-def03.md</code>)</td>
+</tr>
+<tr class="even">
+<td>#9 missing CSP</td>
+<td>local dev server has no deployment proxy header policy</td>
+<td>Low / P2</td>
+<td>RISK-03</td>
+<td>set CSP in deployment configuration</td>
+</tr>
+<tr class="odd">
+<td>axe button-name/landmark/label</td>
+<td>icon buttons and layout lacked accessible names/landmarks</td>
+<td>Critical→fixed</td>
+<td>RISK-10</td>
+<td>added aria-labels, main landmark, h1, header scopes</td>
+</tr>
+<tr class="even">
+<td>Lighthouse colour contrast</td>
+<td>primary button and footer link colours too light</td>
+<td>Serious→fixed</td>
+<td>RISK-10</td>
+<td>darker button, underlined darker links</td>
+</tr>
+<tr class="odd">
+<td>k6 no threshold breach</td>
+<td>operation is a cheap read on local SQLite</td>
+<td>n/a</td>
+<td>RISK-06/15</td>
+<td>keep 500 ms / 1% limits; no fix needed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="test-management-ai-use-and-viva">6. Test management, AI use and
+viva</h2>
+<p>Test plan, estimation, risk register, exit criteria and weekly
+reports are in <code>docs/03</code>–<code>docs/07</code> and
+<code>docs/18-weekly-reports/</code>. Actuals remain unlogged in
+<code>docs/effort-log.csv</code> — a known gap for Taimoor. AI use is
+disclosed per row in <code>docs/ai-use-record.md</code>, with prompts
+and both source documents in <code>docs/prompts/</code>. Viva notes and
+the live-task change map are in <code>docs/viva/</code>.</p>
+<h2 id="release-decision">7. Release decision</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criterion</th>
+<th>Target</th>
+<th>Actual</th>
+<th>Met</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>RC-1 functional status correctness</td>
+<td>100% MCC/MC-DC cases pass; BVA at all bounds</td>
+<td>225 tests pass; boundary tests at 59/60/61 and
+31535999/31536000/31536001</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>RC-2 access control</td>
+<td>100% decisions, zero High auth defects</td>
+<td>5/5 automated decisions pass, but issue #6 is High and
+unresolved</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>RC-3 performance/reliability</td>
+<td>p95 ≤ 500 ms, &lt;1% failures, 4 runs</td>
+<td>worst p95 143.1 ms, 0 failures, 4 runs; recovery test passes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Decision: HOLD.</strong> The single release blocker is issue
+#6 (High vulnerability in a vendored asset), plus the uncompleted
+branch-protection step. Full detail and residual risk are in
+<code>docs/19-completion-report.md</code>. Evidence links and hashes are
+indexed in <code>evidence/manifest.csv</code> (71 artefacts).</p>
+</body>
+</html>

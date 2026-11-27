@@ -1,0 +1,10 @@
+digraph fishbone {
+  rankdir=LR;
+  node [shape=box, fontsize=10];
+  effect [label="DEF-01: vulnerable DOMPurify asset", shape=ellipse, color=red];
+  subgraph cluster_people { label="People"; p1 [label="No owner for vendored JS"]; p2 [label="No review of static assets"]; }
+  subgraph cluster_process { label="Process"; pr1 [label="Security scan late in project"]; pr2 [label="Upgrade needs documented PR"]; }
+  subgraph cluster_tooling { label="Tooling"; t1 [label="No vendored-JS dependency check"]; t2 [label="ZAP added only in Phase 11"]; }
+  subgraph cluster_source { label="Source"; s1 [label="Inherited from upstream baseline"]; s2 [label="Version not recorded in README-team"]; }
+  p1 -> effect; p2 -> effect; pr1 -> effect; pr2 -> effect; t1 -> effect; t2 -> effect; s1 -> effect; s2 -> effect;
+}

@@ -73,6 +73,8 @@ recorded as a specific finding with a proposed fix, not silently ignored.
 
 `pip-audit` checked **54** pinned packages from both requirements files:
 **0 known vulnerabilities**. Raw output: `evidence/security/pip-audit.json`.
+`npm audit` checked the `package.json`/lockfile introduced for Playwright:
+**0 vulnerabilities** in all severity bands (`evidence/security/npm-audit.json`).
 
 ## 6. Residual risk and links
 
