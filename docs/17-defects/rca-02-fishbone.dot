@@ -1,0 +1,10 @@
+digraph fishbone {
+  rankdir=LR;
+  node [shape=box, fontsize=10];
+  effect [label="DEF-03: traceability coverage 0%", shape=ellipse, color=red];
+  subgraph cluster_people { label="People"; p1 [label="Snapshot treated as final"]; p2 [label="No viva check of numbers"]; }
+  subgraph cluster_process { label="Process"; pr1 [label="No regeneration step after tests"]; pr2 [label="No CI check on coverage JSON"]; }
+  subgraph cluster_tooling { label="Tooling"; t1 [label="pytest-json-report not installed earlier"]; t2 [label="Script output not wired to CI"]; }
+  subgraph cluster_source { label="Source"; s1 [label="Tests added in later phases"]; s2 [label="FR tags only in test names"]; }
+  p1 -> effect; p2 -> effect; pr1 -> effect; pr2 -> effect; t1 -> effect; t2 -> effect; s1 -> effect; s2 -> effect;
+}
