@@ -1,0 +1,42 @@
+[
+  {
+    "role": "owner (rw)",
+    "surface": "dashboard",
+    "action": "open Add Check",
+    "expected": "allowed",
+    "observed": "allowed",
+    "passed": true
+  },
+  {
+    "role": "read-only member",
+    "surface": "dashboard",
+    "action": "open Add Check",
+    "expected": "denied",
+    "observed": "denied",
+    "passed": true
+  },
+  {
+    "role": "rw API key",
+    "surface": "API",
+    "action": "pause check",
+    "expected": "200",
+    "observed": "200",
+    "passed": true
+  },
+  {
+    "role": "ro API key",
+    "surface": "API",
+    "action": "pause check",
+    "expected": "401",
+    "observed": "401",
+    "passed": true
+  },
+  {
+    "role": "read-only member",
+    "surface": "dashboard",
+    "action": "pause check button",
+    "expected": "denied",
+    "observed": "denied",
+    "passed": true
+  }
+]

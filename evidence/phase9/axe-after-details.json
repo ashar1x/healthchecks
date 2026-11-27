@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-11-26T19:09:56.097Z",
+  "timestamp": "2026-11-27T11:41:08.531Z",
   "url": "http://127.0.0.1:8000/checks/600ffc66-7afa-5aac-9ecc-966d8a4de219/details/",
   "toolOptions": {
     "reporter": "v1"
@@ -2968,9 +2968,409 @@
           "all": [],
           "none": [],
           "impact": null,
+          "html": "<td>Nov 27</td>",
+          "target": [
+            "tr[data-dt=\"1795778727\"] > td:nth-child(2)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td>11:25</td>",
+          "target": [
+            "tr[data-dt=\"1795778727\"] > td:nth-child(3)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>",
+          "target": [
+            "tr[data-dt=\"1795778727\"] > td[colspan=\"2\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<strong>new ➔ paused</strong>",
+          "target": [
+            "tr[data-dt=\"1795778727\"] > td[colspan=\"2\"] > strong"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td>Nov 27</td>",
+          "target": [
+            "tr[data-dt=\"1795778726\"] > td:nth-child(2)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td>11:25</td>",
+          "target": [
+            "tr[data-dt=\"1795778726\"] > td:nth-child(3)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>",
+          "target": [
+            "tr[data-dt=\"1795778726\"] > td[colspan=\"2\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<strong>paused ➔ new</strong>",
+          "target": [
+            "tr[data-dt=\"1795778726\"] > td[colspan=\"2\"] > strong"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
           "html": "<td>Nov 26</td>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(1) > td:nth-child(2)"
+            "tr[data-dt=\"1795720205\"] > td:nth-child(2)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td>19:10</td>",
+          "target": [
+            "tr[data-dt=\"1795720205\"] > td:nth-child(3)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>",
+          "target": [
+            "tr[data-dt=\"1795720205\"] > td[colspan=\"2\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<strong>new ➔ paused</strong>",
+          "target": [
+            "tr[data-dt=\"1795720205\"] > td[colspan=\"2\"] > strong"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td>Nov 26</td>",
+          "target": [
+            "tr[data-dt=\"1795720204\"] > td:nth-child(2)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td>19:10</td>",
+          "target": [
+            "tr[data-dt=\"1795720204\"] > td:nth-child(3)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>",
+          "target": [
+            "tr[data-dt=\"1795720204\"] > td[colspan=\"2\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<strong>paused ➔ new</strong>",
+          "target": [
+            "tr[data-dt=\"1795720204\"] > td[colspan=\"2\"] > strong"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#eeeeee",
+                "contrastRatio": 10.88,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 10.88"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td>Nov 26</td>",
+          "target": [
+            ".flip[data-dt=\"1795720147\"]:nth-child(5) > td:nth-child(2)"
           ]
         },
         {
@@ -2995,7 +3395,7 @@
           "impact": null,
           "html": "<td>19:09</td>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(1) > td:nth-child(3)"
+            ".flip[data-dt=\"1795720147\"]:nth-child(5) > td:nth-child(3)"
           ]
         },
         {
@@ -3020,7 +3420,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(1) > td[colspan=\"2\"]"
+            ".flip[data-dt=\"1795720147\"]:nth-child(5) > td[colspan=\"2\"]"
           ]
         },
         {
@@ -3045,7 +3445,7 @@
           "impact": null,
           "html": "<strong>new ➔ paused</strong>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(1) > td[colspan=\"2\"] > strong"
+            ".flip[data-dt=\"1795720147\"]:nth-child(5) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -3070,7 +3470,7 @@
           "impact": null,
           "html": "<td>Nov 26</td>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(2) > td:nth-child(2)"
+            ".flip[data-dt=\"1795720147\"]:nth-child(6) > td:nth-child(2)"
           ]
         },
         {
@@ -3095,7 +3495,7 @@
           "impact": null,
           "html": "<td>19:09</td>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(2) > td:nth-child(3)"
+            ".flip[data-dt=\"1795720147\"]:nth-child(6) > td:nth-child(3)"
           ]
         },
         {
@@ -3120,7 +3520,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(2) > td[colspan=\"2\"]"
+            ".flip[data-dt=\"1795720147\"]:nth-child(6) > td[colspan=\"2\"]"
           ]
         },
         {
@@ -3145,7 +3545,7 @@
           "impact": null,
           "html": "<strong>paused ➔ new</strong>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(2) > td[colspan=\"2\"] > strong"
+            ".flip[data-dt=\"1795720147\"]:nth-child(6) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -3170,7 +3570,7 @@
           "impact": null,
           "html": "<td>Nov 26</td>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(3) > td:nth-child(2)"
+            ".flip[data-dt=\"1795720024\"]:nth-child(7) > td:nth-child(2)"
           ]
         },
         {
@@ -3195,7 +3595,7 @@
           "impact": null,
           "html": "<td>19:07</td>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(3) > td:nth-child(3)"
+            ".flip[data-dt=\"1795720024\"]:nth-child(7) > td:nth-child(3)"
           ]
         },
         {
@@ -3220,7 +3620,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(3) > td[colspan=\"2\"]"
+            ".flip[data-dt=\"1795720024\"]:nth-child(7) > td[colspan=\"2\"]"
           ]
         },
         {
@@ -3245,7 +3645,7 @@
           "impact": null,
           "html": "<strong>new ➔ paused</strong>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(3) > td[colspan=\"2\"] > strong"
+            ".flip[data-dt=\"1795720024\"]:nth-child(7) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -3270,7 +3670,7 @@
           "impact": null,
           "html": "<td>Nov 26</td>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(4) > td:nth-child(2)"
+            ".flip[data-dt=\"1795720024\"]:nth-child(8) > td:nth-child(2)"
           ]
         },
         {
@@ -3295,7 +3695,7 @@
           "impact": null,
           "html": "<td>19:07</td>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(4) > td:nth-child(3)"
+            ".flip[data-dt=\"1795720024\"]:nth-child(8) > td:nth-child(3)"
           ]
         },
         {
@@ -3320,7 +3720,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(4) > td[colspan=\"2\"]"
+            ".flip[data-dt=\"1795720024\"]:nth-child(8) > td[colspan=\"2\"]"
           ]
         },
         {
@@ -3345,7 +3745,7 @@
           "impact": null,
           "html": "<strong>paused ➔ new</strong>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(4) > td[colspan=\"2\"] > strong"
+            ".flip[data-dt=\"1795720024\"]:nth-child(8) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -3370,7 +3770,7 @@
           "impact": null,
           "html": "<td>Nov 26</td>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(5) > td:nth-child(2)"
+            ".flip[data-dt=\"1795719666\"]:nth-child(9) > td:nth-child(2)"
           ]
         },
         {
@@ -3395,7 +3795,7 @@
           "impact": null,
           "html": "<td>19:01</td>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(5) > td:nth-child(3)"
+            ".flip[data-dt=\"1795719666\"]:nth-child(9) > td:nth-child(3)"
           ]
         },
         {
@@ -3420,7 +3820,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(5) > td[colspan=\"2\"]"
+            ".flip[data-dt=\"1795719666\"]:nth-child(9) > td[colspan=\"2\"]"
           ]
         },
         {
@@ -3445,7 +3845,7 @@
           "impact": null,
           "html": "<strong>new ➔ paused</strong>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(5) > td[colspan=\"2\"] > strong"
+            ".flip[data-dt=\"1795719666\"]:nth-child(9) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -3470,7 +3870,7 @@
           "impact": null,
           "html": "<td>Nov 26</td>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(6) > td:nth-child(2)"
+            ".flip[data-dt=\"1795719666\"]:nth-child(10) > td:nth-child(2)"
           ]
         },
         {
@@ -3495,7 +3895,7 @@
           "impact": null,
           "html": "<td>19:01</td>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(6) > td:nth-child(3)"
+            ".flip[data-dt=\"1795719666\"]:nth-child(10) > td:nth-child(3)"
           ]
         },
         {
@@ -3520,7 +3920,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(6) > td[colspan=\"2\"]"
+            ".flip[data-dt=\"1795719666\"]:nth-child(10) > td[colspan=\"2\"]"
           ]
         },
         {
@@ -3545,7 +3945,7 @@
           "impact": null,
           "html": "<strong>paused ➔ new</strong>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(6) > td[colspan=\"2\"] > strong"
+            ".flip[data-dt=\"1795719666\"]:nth-child(10) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -3570,7 +3970,7 @@
           "impact": null,
           "html": "<td>Nov 26</td>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(7) > td:nth-child(2)"
+            ".flip[data-dt=\"1795718878\"]:nth-child(11) > td:nth-child(2)"
           ]
         },
         {
@@ -3595,7 +3995,7 @@
           "impact": null,
           "html": "<td>18:47</td>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(7) > td:nth-child(3)"
+            ".flip[data-dt=\"1795718878\"]:nth-child(11) > td:nth-child(3)"
           ]
         },
         {
@@ -3620,7 +4020,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(7) > td[colspan=\"2\"]"
+            ".flip[data-dt=\"1795718878\"]:nth-child(11) > td[colspan=\"2\"]"
           ]
         },
         {
@@ -3645,7 +4045,7 @@
           "impact": null,
           "html": "<strong>new ➔ paused</strong>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(7) > td[colspan=\"2\"] > strong"
+            ".flip[data-dt=\"1795718878\"]:nth-child(11) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -3670,7 +4070,7 @@
           "impact": null,
           "html": "<td>Nov 26</td>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(8) > td:nth-child(2)"
+            ".flip[data-dt=\"1795718878\"]:nth-child(12) > td:nth-child(2)"
           ]
         },
         {
@@ -3695,7 +4095,7 @@
           "impact": null,
           "html": "<td>18:47</td>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(8) > td:nth-child(3)"
+            ".flip[data-dt=\"1795718878\"]:nth-child(12) > td:nth-child(3)"
           ]
         },
         {
@@ -3720,7 +4120,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(8) > td[colspan=\"2\"]"
+            ".flip[data-dt=\"1795718878\"]:nth-child(12) > td[colspan=\"2\"]"
           ]
         },
         {
@@ -3745,7 +4145,7 @@
           "impact": null,
           "html": "<strong>paused ➔ new</strong>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(8) > td[colspan=\"2\"] > strong"
+            ".flip[data-dt=\"1795718878\"]:nth-child(12) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -9374,9 +9774,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<tr class=\"flip\" data-dt=\"1795720147\">\n    <td></td><td>Nov 26</td><td>19:09</td>\n    <td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>\n</tr>",
+          "html": "<tr class=\"flip\" data-dt=\"1795778727\">\n    <td></td><td>Nov 27</td><td>11:25</td>\n    <td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>\n</tr>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(1)"
+            "tr[data-dt=\"1795778727\"]"
           ]
         },
         {
@@ -9396,7 +9796,7 @@
           "impact": null,
           "html": "<td></td>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(1) > td:nth-child(1)"
+            "tr[data-dt=\"1795778727\"] > td:nth-child(1)"
           ]
         },
         {
@@ -9414,9 +9814,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<td>Nov 26</td>",
+          "html": "<td>Nov 27</td>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(1) > td:nth-child(2)"
+            "tr[data-dt=\"1795778727\"] > td:nth-child(2)"
           ]
         },
         {
@@ -9434,9 +9834,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<td>19:09</td>",
+          "html": "<td>11:25</td>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(1) > td:nth-child(3)"
+            "tr[data-dt=\"1795778727\"] > td:nth-child(3)"
           ]
         },
         {
@@ -9456,7 +9856,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(1) > td[colspan=\"2\"]"
+            "tr[data-dt=\"1795778727\"] > td[colspan=\"2\"]"
           ]
         },
         {
@@ -9476,7 +9876,487 @@
           "impact": null,
           "html": "<strong>new ➔ paused</strong>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(1) > td[colspan=\"2\"] > strong"
+            "tr[data-dt=\"1795778727\"] > td[colspan=\"2\"] > strong"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<tr class=\"flip\" data-dt=\"1795778726\">\n    <td></td><td>Nov 27</td><td>11:25</td>\n    <td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>\n</tr>",
+          "target": [
+            "tr[data-dt=\"1795778726\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td></td>",
+          "target": [
+            "tr[data-dt=\"1795778726\"] > td:nth-child(1)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td>Nov 27</td>",
+          "target": [
+            "tr[data-dt=\"1795778726\"] > td:nth-child(2)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td>11:25</td>",
+          "target": [
+            "tr[data-dt=\"1795778726\"] > td:nth-child(3)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>",
+          "target": [
+            "tr[data-dt=\"1795778726\"] > td[colspan=\"2\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<strong>paused ➔ new</strong>",
+          "target": [
+            "tr[data-dt=\"1795778726\"] > td[colspan=\"2\"] > strong"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<tr class=\"flip\" data-dt=\"1795720205\">\n    <td></td><td>Nov 26</td><td>19:10</td>\n    <td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>\n</tr>",
+          "target": [
+            "tr[data-dt=\"1795720205\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td></td>",
+          "target": [
+            "tr[data-dt=\"1795720205\"] > td:nth-child(1)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td>Nov 26</td>",
+          "target": [
+            "tr[data-dt=\"1795720205\"] > td:nth-child(2)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td>19:10</td>",
+          "target": [
+            "tr[data-dt=\"1795720205\"] > td:nth-child(3)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>",
+          "target": [
+            "tr[data-dt=\"1795720205\"] > td[colspan=\"2\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<strong>new ➔ paused</strong>",
+          "target": [
+            "tr[data-dt=\"1795720205\"] > td[colspan=\"2\"] > strong"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<tr class=\"flip\" data-dt=\"1795720204\">\n    <td></td><td>Nov 26</td><td>19:10</td>\n    <td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>\n</tr>",
+          "target": [
+            "tr[data-dt=\"1795720204\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td></td>",
+          "target": [
+            "tr[data-dt=\"1795720204\"] > td:nth-child(1)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td>Nov 26</td>",
+          "target": [
+            "tr[data-dt=\"1795720204\"] > td:nth-child(2)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td>19:10</td>",
+          "target": [
+            "tr[data-dt=\"1795720204\"] > td:nth-child(3)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>",
+          "target": [
+            "tr[data-dt=\"1795720204\"] > td[colspan=\"2\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<strong>paused ➔ new</strong>",
+          "target": [
+            "tr[data-dt=\"1795720204\"] > td[colspan=\"2\"] > strong"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<tr class=\"flip\" data-dt=\"1795720147\">\n    <td></td><td>Nov 26</td><td>19:09</td>\n    <td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>\n</tr>",
+          "target": [
+            ".flip[data-dt=\"1795720147\"]:nth-child(5)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td></td>",
+          "target": [
+            ".flip[data-dt=\"1795720147\"]:nth-child(5) > td:nth-child(1)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td>Nov 26</td>",
+          "target": [
+            ".flip[data-dt=\"1795720147\"]:nth-child(5) > td:nth-child(2)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td>19:09</td>",
+          "target": [
+            ".flip[data-dt=\"1795720147\"]:nth-child(5) > td:nth-child(3)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>",
+          "target": [
+            ".flip[data-dt=\"1795720147\"]:nth-child(5) > td[colspan=\"2\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<strong>new ➔ paused</strong>",
+          "target": [
+            ".flip[data-dt=\"1795720147\"]:nth-child(5) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -9496,7 +10376,7 @@
           "impact": null,
           "html": "<tr class=\"flip\" data-dt=\"1795720147\">\n    <td></td><td>Nov 26</td><td>19:09</td>\n    <td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>\n</tr>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(2)"
+            ".flip[data-dt=\"1795720147\"]:nth-child(6)"
           ]
         },
         {
@@ -9516,7 +10396,7 @@
           "impact": null,
           "html": "<td></td>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(2) > td:nth-child(1)"
+            ".flip[data-dt=\"1795720147\"]:nth-child(6) > td:nth-child(1)"
           ]
         },
         {
@@ -9536,7 +10416,7 @@
           "impact": null,
           "html": "<td>Nov 26</td>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(2) > td:nth-child(2)"
+            ".flip[data-dt=\"1795720147\"]:nth-child(6) > td:nth-child(2)"
           ]
         },
         {
@@ -9556,7 +10436,7 @@
           "impact": null,
           "html": "<td>19:09</td>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(2) > td:nth-child(3)"
+            ".flip[data-dt=\"1795720147\"]:nth-child(6) > td:nth-child(3)"
           ]
         },
         {
@@ -9576,7 +10456,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(2) > td[colspan=\"2\"]"
+            ".flip[data-dt=\"1795720147\"]:nth-child(6) > td[colspan=\"2\"]"
           ]
         },
         {
@@ -9596,7 +10476,7 @@
           "impact": null,
           "html": "<strong>paused ➔ new</strong>",
           "target": [
-            ".flip[data-dt=\"1795720147\"]:nth-child(2) > td[colspan=\"2\"] > strong"
+            ".flip[data-dt=\"1795720147\"]:nth-child(6) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -9616,7 +10496,7 @@
           "impact": null,
           "html": "<tr class=\"flip\" data-dt=\"1795720024\">\n    <td></td><td>Nov 26</td><td>19:07</td>\n    <td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>\n</tr>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(3)"
+            ".flip[data-dt=\"1795720024\"]:nth-child(7)"
           ]
         },
         {
@@ -9636,7 +10516,7 @@
           "impact": null,
           "html": "<td></td>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(3) > td:nth-child(1)"
+            ".flip[data-dt=\"1795720024\"]:nth-child(7) > td:nth-child(1)"
           ]
         },
         {
@@ -9656,7 +10536,7 @@
           "impact": null,
           "html": "<td>Nov 26</td>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(3) > td:nth-child(2)"
+            ".flip[data-dt=\"1795720024\"]:nth-child(7) > td:nth-child(2)"
           ]
         },
         {
@@ -9676,7 +10556,7 @@
           "impact": null,
           "html": "<td>19:07</td>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(3) > td:nth-child(3)"
+            ".flip[data-dt=\"1795720024\"]:nth-child(7) > td:nth-child(3)"
           ]
         },
         {
@@ -9696,7 +10576,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(3) > td[colspan=\"2\"]"
+            ".flip[data-dt=\"1795720024\"]:nth-child(7) > td[colspan=\"2\"]"
           ]
         },
         {
@@ -9716,7 +10596,7 @@
           "impact": null,
           "html": "<strong>new ➔ paused</strong>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(3) > td[colspan=\"2\"] > strong"
+            ".flip[data-dt=\"1795720024\"]:nth-child(7) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -9736,7 +10616,7 @@
           "impact": null,
           "html": "<tr class=\"flip\" data-dt=\"1795720024\">\n    <td></td><td>Nov 26</td><td>19:07</td>\n    <td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>\n</tr>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(4)"
+            ".flip[data-dt=\"1795720024\"]:nth-child(8)"
           ]
         },
         {
@@ -9756,7 +10636,7 @@
           "impact": null,
           "html": "<td></td>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(4) > td:nth-child(1)"
+            ".flip[data-dt=\"1795720024\"]:nth-child(8) > td:nth-child(1)"
           ]
         },
         {
@@ -9776,7 +10656,7 @@
           "impact": null,
           "html": "<td>Nov 26</td>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(4) > td:nth-child(2)"
+            ".flip[data-dt=\"1795720024\"]:nth-child(8) > td:nth-child(2)"
           ]
         },
         {
@@ -9796,7 +10676,7 @@
           "impact": null,
           "html": "<td>19:07</td>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(4) > td:nth-child(3)"
+            ".flip[data-dt=\"1795720024\"]:nth-child(8) > td:nth-child(3)"
           ]
         },
         {
@@ -9816,7 +10696,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(4) > td[colspan=\"2\"]"
+            ".flip[data-dt=\"1795720024\"]:nth-child(8) > td[colspan=\"2\"]"
           ]
         },
         {
@@ -9836,7 +10716,7 @@
           "impact": null,
           "html": "<strong>paused ➔ new</strong>",
           "target": [
-            ".flip[data-dt=\"1795720024\"]:nth-child(4) > td[colspan=\"2\"] > strong"
+            ".flip[data-dt=\"1795720024\"]:nth-child(8) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -9856,7 +10736,7 @@
           "impact": null,
           "html": "<tr class=\"flip\" data-dt=\"1795719666\">\n    <td></td><td>Nov 26</td><td>19:01</td>\n    <td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>\n</tr>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(5)"
+            ".flip[data-dt=\"1795719666\"]:nth-child(9)"
           ]
         },
         {
@@ -9876,7 +10756,7 @@
           "impact": null,
           "html": "<td></td>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(5) > td:nth-child(1)"
+            ".flip[data-dt=\"1795719666\"]:nth-child(9) > td:nth-child(1)"
           ]
         },
         {
@@ -9896,7 +10776,7 @@
           "impact": null,
           "html": "<td>Nov 26</td>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(5) > td:nth-child(2)"
+            ".flip[data-dt=\"1795719666\"]:nth-child(9) > td:nth-child(2)"
           ]
         },
         {
@@ -9916,7 +10796,7 @@
           "impact": null,
           "html": "<td>19:01</td>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(5) > td:nth-child(3)"
+            ".flip[data-dt=\"1795719666\"]:nth-child(9) > td:nth-child(3)"
           ]
         },
         {
@@ -9936,7 +10816,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(5) > td[colspan=\"2\"]"
+            ".flip[data-dt=\"1795719666\"]:nth-child(9) > td[colspan=\"2\"]"
           ]
         },
         {
@@ -9956,7 +10836,7 @@
           "impact": null,
           "html": "<strong>new ➔ paused</strong>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(5) > td[colspan=\"2\"] > strong"
+            ".flip[data-dt=\"1795719666\"]:nth-child(9) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -9976,7 +10856,7 @@
           "impact": null,
           "html": "<tr class=\"flip\" data-dt=\"1795719666\">\n    <td></td><td>Nov 26</td><td>19:01</td>\n    <td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>\n</tr>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(6)"
+            ".flip[data-dt=\"1795719666\"]:nth-child(10)"
           ]
         },
         {
@@ -9996,7 +10876,7 @@
           "impact": null,
           "html": "<td></td>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(6) > td:nth-child(1)"
+            ".flip[data-dt=\"1795719666\"]:nth-child(10) > td:nth-child(1)"
           ]
         },
         {
@@ -10016,7 +10896,7 @@
           "impact": null,
           "html": "<td>Nov 26</td>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(6) > td:nth-child(2)"
+            ".flip[data-dt=\"1795719666\"]:nth-child(10) > td:nth-child(2)"
           ]
         },
         {
@@ -10036,7 +10916,7 @@
           "impact": null,
           "html": "<td>19:01</td>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(6) > td:nth-child(3)"
+            ".flip[data-dt=\"1795719666\"]:nth-child(10) > td:nth-child(3)"
           ]
         },
         {
@@ -10056,7 +10936,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(6) > td[colspan=\"2\"]"
+            ".flip[data-dt=\"1795719666\"]:nth-child(10) > td[colspan=\"2\"]"
           ]
         },
         {
@@ -10076,7 +10956,7 @@
           "impact": null,
           "html": "<strong>paused ➔ new</strong>",
           "target": [
-            ".flip[data-dt=\"1795719666\"]:nth-child(6) > td[colspan=\"2\"] > strong"
+            ".flip[data-dt=\"1795719666\"]:nth-child(10) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -10096,7 +10976,7 @@
           "impact": null,
           "html": "<tr class=\"flip\" data-dt=\"1795718878\">\n    <td></td><td>Nov 26</td><td>18:47</td>\n    <td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>\n</tr>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(7)"
+            ".flip[data-dt=\"1795718878\"]:nth-child(11)"
           ]
         },
         {
@@ -10116,7 +10996,7 @@
           "impact": null,
           "html": "<td></td>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(7) > td:nth-child(1)"
+            ".flip[data-dt=\"1795718878\"]:nth-child(11) > td:nth-child(1)"
           ]
         },
         {
@@ -10136,7 +11016,7 @@
           "impact": null,
           "html": "<td>Nov 26</td>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(7) > td:nth-child(2)"
+            ".flip[data-dt=\"1795718878\"]:nth-child(11) > td:nth-child(2)"
           ]
         },
         {
@@ -10156,7 +11036,7 @@
           "impact": null,
           "html": "<td>18:47</td>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(7) > td:nth-child(3)"
+            ".flip[data-dt=\"1795718878\"]:nth-child(11) > td:nth-child(3)"
           ]
         },
         {
@@ -10176,7 +11056,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>new ➔ paused</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(7) > td[colspan=\"2\"]"
+            ".flip[data-dt=\"1795718878\"]:nth-child(11) > td[colspan=\"2\"]"
           ]
         },
         {
@@ -10196,7 +11076,7 @@
           "impact": null,
           "html": "<strong>new ➔ paused</strong>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(7) > td[colspan=\"2\"] > strong"
+            ".flip[data-dt=\"1795718878\"]:nth-child(11) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -10216,7 +11096,7 @@
           "impact": null,
           "html": "<tr class=\"flip\" data-dt=\"1795718878\">\n    <td></td><td>Nov 26</td><td>18:47</td>\n    <td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>\n</tr>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(8)"
+            ".flip[data-dt=\"1795718878\"]:nth-child(12)"
           ]
         },
         {
@@ -10236,7 +11116,7 @@
           "impact": null,
           "html": "<td></td>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(8) > td:nth-child(1)"
+            ".flip[data-dt=\"1795718878\"]:nth-child(12) > td:nth-child(1)"
           ]
         },
         {
@@ -10256,7 +11136,7 @@
           "impact": null,
           "html": "<td>Nov 26</td>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(8) > td:nth-child(2)"
+            ".flip[data-dt=\"1795718878\"]:nth-child(12) > td:nth-child(2)"
           ]
         },
         {
@@ -10276,7 +11156,7 @@
           "impact": null,
           "html": "<td>18:47</td>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(8) > td:nth-child(3)"
+            ".flip[data-dt=\"1795718878\"]:nth-child(12) > td:nth-child(3)"
           ]
         },
         {
@@ -10296,7 +11176,7 @@
           "impact": null,
           "html": "<td colspan=\"2\">\n        Status: <strong>paused ➔ new</strong>.\n    </td>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(8) > td[colspan=\"2\"]"
+            ".flip[data-dt=\"1795718878\"]:nth-child(12) > td[colspan=\"2\"]"
           ]
         },
         {
@@ -10316,7 +11196,7 @@
           "impact": null,
           "html": "<strong>paused ➔ new</strong>",
           "target": [
-            ".flip[data-dt=\"1795718878\"]:nth-child(8) > td[colspan=\"2\"] > strong"
+            ".flip[data-dt=\"1795718878\"]:nth-child(12) > td[colspan=\"2\"] > strong"
           ]
         },
         {
@@ -10734,7 +11614,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<form id=\"resume-form\" action=\"/checks/600ffc66-7afa-5aac-9ecc-966d8a4de219/resume/\" method=\"post\">\n    <input type=\"hidden\" name=\"csrfmiddlewaretoken\" value=\"xD3CIHY4oTsDfi7vjTkDP9qIaJtN6aqixvd8cRTv0xQ1igVYjIZfrSspHstpLRuo\">\n</form>",
+          "html": "<form id=\"resume-form\" action=\"/checks/600ffc66-7afa-5aac-9ecc-966d8a4de219/resume/\" method=\"post\">\n    <input type=\"hidden\" name=\"csrfmiddlewaretoken\" value=\"BpgAS9UdKlp1lSlzhpu6zQ2mxAauEAeWECuW4aTJPXbFBScPgtULrxA2DTg6Vynq\">\n</form>",
           "target": [
             "#resume-form"
           ]
