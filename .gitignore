@@ -17,3 +17,5 @@ django-server.log
 node_modules/
 test-results/
 tests/e2e/.auth/
+zap*.log
+k6-done.flag
