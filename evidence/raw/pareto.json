@@ -1,0 +1,23 @@
+{
+  "source": "evidence/raw/issues.json",
+  "slices": [
+    {
+      "category": "security",
+      "count": 2,
+      "percent": 50.0,
+      "cumulative": 50.0
+    },
+    {
+      "category": "test-management",
+      "count": 1,
+      "percent": 25.0,
+      "cumulative": 75.0
+    },
+    {
+      "category": "validation",
+      "count": 1,
+      "percent": 25.0,
+      "cumulative": 100.0
+    }
+  ]
+}

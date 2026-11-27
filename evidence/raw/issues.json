@@ -1,0 +1,4 @@
+{"labels":["severity:Low","priority:P2","status:New","category:security"],"number":9,"state":"open","title":"DEF-04 Missing Content-Security-Policy on local app"}
+{"labels":["severity:High","priority:P1","status:New","category:test-management"],"number":8,"state":"open","title":"DEF-03 Traceability script reports 0% requirements coverage"}
+{"labels":["severity:Medium","priority:P2","status:New","category:validation"],"number":7,"state":"open","title":"DEF-02 Invalid timeout/grace returns bare HTTP 400 with no explanation"}
+{"labels":["severity:High","priority:P1","status:New","category:security"],"number":6,"state":"open","title":"DEF-01 Vendored DOMPurify has a known vulnerability"}
