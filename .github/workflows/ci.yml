@@ -1,0 +1,133 @@
+name: CI Quality Gate
+
+on:
+  pull_request:
+    branches: [master, area1/ashar]
+  push:
+    branches: [master, area1/ashar]
+
+permissions:
+  contents: read
+
+jobs:
+  workflow-lint:
+    name: No escape hatches
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Reject banned CI patterns
+        run: python tools/evidence/check_workflows.py
+
+  unit-coverage:
+    name: Unit tests and coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt -r requirements-dev.txt coverage pytest pytest-django time-machine
+      - name: Run unit tests with coverage
+        env:
+          SECRET_KEY: dummy-key
+        run: |
+          coverage run --rcfile=.coveragerc -m pytest tests/team/unit/ tests/team/api/ tests/team/test_recovery.py -q
+          coverage xml -o evidence/coverage.xml
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage-xml
+          path: evidence/coverage.xml
+
+  api-tests:
+    name: API tests with generated data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt -r requirements-dev.txt pytest pytest-django time-machine
+      - name: Run API tests
+        env:
+          SECRET_KEY: dummy-key
+        run: pytest tests/team/api/ -q
+
+  e2e:
+    name: Playwright browser tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: bash scripts/setup.sh && SECRET_KEY=dummy-key ALLOWED_HOSTS=127.0.0.1,localhost bash scripts/seed.sh
+      - run: npm ci
+      - name: Playwright
+        env:
+          SECRET_KEY: dummy-key
+          ALLOWED_HOSTS: 127.0.0.1,localhost
+        run: npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: evidence/phase9/playwright-report
+
+  mutation:
+    name: Mutation gate (80%)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt -r requirements-dev.txt mutmut pytest pytest-django
+      - run: pip uninstall -y pytest-randomly
+      - run: mutmut run
+      - run: python tools/mutation/score_gate.py
+
+  sonarqube:
+    name: SonarQube quality gate
+    runs-on: ubuntu-latest
+    services:
+      sonarqube:
+        image: sonarqube:community
+        ports:
+          - 9000:9000
+        env:
+          SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+    steps:
+      - uses: actions/checkout@v7
+      - name: Wait for SonarQube
+        run: |
+          for i in $(seq 1 60); do
+            if curl -sf http://127.0.0.1:9000/api/system/status | grep -q '"UP"'; then exit 0; fi
+            sleep 5
+          done
+          exit 1
+      - name: Install scanner
+        run: pip install sonar-scanner
+      - name: Scan and wait for gate
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          sonar-scanner \
+            -Dsonar.host.url=http://127.0.0.1:9000 \
+            -Dsonar.login="$SONAR_TOKEN" \
+            -Dsonar.projectKey=healthchecks-sqe \
+            -Dsonar.sources=hc \
+            -Dsonar.python.coverage.reportPaths=evidence/coverage.xml \
+            -Dsonar.qualitygate.wait=true
+
+  deploy:
+    name: Package artifact
+    needs: [workflow-lint, unit-coverage, api-tests, e2e, mutation, sonarqube]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build repository artifact
+        run: zip -rq healthchecks-package.zip . -x 'node_modules/*' 'mutmut_venv/*' '.venv/*' '.git/*'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: healthchecks-package
+          path: healthchecks-package.zip
